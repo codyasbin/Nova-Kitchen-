@@ -2,12 +2,24 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Menu, Search, Phone, X, ChevronRight, ChevronDown } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import {
+  Menu,
+  Search,
+  Phone,
+  X,
+  ChevronRight,
+  ChevronDown,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { FaWhatsapp, FaViber } from "react-icons/fa";
@@ -15,12 +27,15 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 interface NavItem {
   name: string;
@@ -47,28 +62,58 @@ const navLinks: NavItem[] = [
       {
         title: "Modular Kitchens",
         items: [
-          { name: "L-Shaped Kitchens", href: "/products?category=modular-kitchen&type=l-shaped" },
-          { name: "U-Shaped Kitchens", href: "/products?category=modular-kitchen&type=u-shaped" },
-          { name: "Parallel Kitchens", href: "/products?category=modular-kitchen&type=parallel" },
-          { name: "Island Kitchens", href: "/products?category=modular-kitchen&type=island" },
+          {
+            name: "L-Shaped Kitchens",
+            href: "/products?category=modular-kitchen&type=l-shaped",
+          },
+          {
+            name: "U-Shaped Kitchens",
+            href: "/products?category=modular-kitchen&type=u-shaped",
+          },
+          {
+            name: "Parallel Kitchens",
+            href: "/products?category=modular-kitchen&type=parallel",
+          },
+          {
+            name: "Island Kitchens",
+            href: "/products?category=modular-kitchen&type=island",
+          },
         ],
       },
       {
         title: "Appliances",
         items: [
-          { name: "Chimneys", href: "/products?category=appliances&type=chimney" },
-          { name: "Gas Stoves", href: "/products?category=appliances&type=gas-stove" },
+          {
+            name: "Chimneys",
+            href: "/products?category=appliances&type=chimney",
+          },
+          {
+            name: "Gas Stoves",
+            href: "/products?category=appliances&type=gas-stove",
+          },
           { name: "Sinks", href: "/products?category=appliances&type=sink" },
           { name: "Ovens", href: "/products?category=appliances&type=oven" },
-          { name: "Dishwashers", href: "/products?category=appliances&type=dishwasher" },
-          { name: "Refrigerators", href: "/products?category=appliances&type=refrigerator" },
+          {
+            name: "Dishwashers",
+            href: "/products?category=appliances&type=dishwasher",
+          },
+          {
+            name: "Refrigerators",
+            href: "/products?category=appliances&type=refrigerator",
+          },
         ],
       },
       {
         title: "Other Products",
         items: [
-          { name: "Water Purifiers", href: "/products?category=water-purifier" },
-          { name: "Kitchen Accessories", href: "/products?category=accessories" },
+          {
+            name: "Water Purifiers",
+            href: "/products?category=water-purifier",
+          },
+          {
+            name: "Kitchen Accessories",
+            href: "/products?category=accessories",
+          },
           { name: "Interior Solutions", href: "/products?category=interior" },
           { name: "Air Conditioners", href: "/products?category=ac" },
         ],
@@ -85,7 +130,9 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
+  const [expandedCategories, setExpandedCategories] = useState<
+    Record<string, boolean>
+  >({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,9 +143,9 @@ export default function Header() {
   }, []);
 
   const toggleCategoryExpanded = (name: string) => {
-    setExpandedCategories(prev => ({
+    setExpandedCategories((prev) => ({
       ...prev,
-      [name]: !prev[name]
+      [name]: !prev[name],
     }));
   };
 
@@ -106,7 +153,9 @@ export default function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-background/95 backdrop-blur-sm border-b shadow-sm" : "bg-transparent"
+        isScrolled
+          ? "bg-background/95 backdrop-blur-sm border-b shadow-sm"
+          : "bg-transparent"
       )}
     >
       <div className="container mx-auto">
@@ -130,18 +179,18 @@ export default function Header() {
                         <div className="grid grid-cols-3 gap-3 p-4 w-[600px]">
                           {link.subMenu.map((group) => (
                             <div key={group.title} className="space-y-2">
-                              <h4 className="text-sm font-medium mb-2">{group.title}</h4>
+                              <h4 className="text-sm font-medium mb-2">
+                                {group.title}
+                              </h4>
                               <ul className="space-y-1">
                                 {group.items.map((item) => (
                                   <li key={item.name}>
-                                    <NavigationMenuLink asChild>
-                                      <Link
-                                        href={item.href}
-                                        className="block p-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
-                                      >
-                                        {item.name}
-                                      </Link>
-                                    </NavigationMenuLink>
+                                    <Link
+                                      href={item.href}
+                                      className="block p-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
+                                    >
+                                      {item.name}
+                                    </Link>
                                   </li>
                                 ))}
                               </ul>
@@ -152,13 +201,14 @@ export default function Header() {
                     </NavigationMenuItem>
                   ) : (
                     <NavigationMenuItem key={link.name}>
-                      <Link href={link.href} legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={navigationMenuTriggerStyle()}
-                          active={pathname === link.href}
-                        >
-                          {link.name}
-                        </NavigationMenuLink>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          pathname === link.href ? "font-medium" : ""
+                        )}
+                      >
+                        {link.name}
                       </Link>
                     </NavigationMenuItem>
                   )
@@ -169,8 +219,16 @@ export default function Header() {
 
           {/* Right Icons */}
           <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(!isSearchOpen)}>
-              {isSearchOpen ? <X className="h-5 w-5" /> : <Search className="h-5 w-5" />}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+            >
+              {isSearchOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Search className="h-5 w-5" />
+              )}
             </Button>
 
             {/* Desktop Contact Buttons */}
@@ -179,12 +237,20 @@ export default function Header() {
                 <Phone className="mr-2 h-4 w-4" />
                 <span className="hidden lg:inline">056-522482</span>
               </Button>
-              <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://wa.me/910000000000"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button variant="outline" size="sm" className="text-green-600">
                   <FaWhatsapp className="mr-2 h-4 w-4" /> WhatsApp
                 </Button>
               </a>
-              <a href="viber://chat?number=910000000000" target="_blank" rel="noopener noreferrer">
+              <a
+                href="viber://chat?number=910000000000"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button variant="outline" size="sm" className="text-purple-600">
                   <FaViber className="mr-2 h-4 w-4" /> Viber
                 </Button>
@@ -195,7 +261,7 @@ export default function Header() {
             <ThemeToggle />
 
             {/* Mobile Menu */}
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen} >
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6" />
@@ -208,34 +274,24 @@ export default function Header() {
                       <span>Nova</span>
                       <span className="text-primary"> Kitchen</span>
                     </div>
-                    
                   </SheetTitle>
                 </SheetHeader>
 
-                {/* <div className="py-2 px-2">
-                  <div className="relative">
-                    <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                    <Input 
-                      type="search" 
-                      placeholder="Search products..." 
-                      className="pl-9 bg-accent/50"
-                    />
-                  </div>
-                </div> */}
-
-                <nav className="h-[calc(65vh)] overflow-y-auto scrollbar-hide px-2 py-2">
+                <nav className="h-[calc(65vh)] overflow-y-auto px-2 py-2">
                   <div className="space-y-1">
                     {navLinks.map((link) => (
                       <div key={link.name} className="mb-1">
                         {link.subMenu ? (
-                          <Collapsible 
-                            className="w-full" 
-                            open={expandedCategories[link.name]} 
-                            onOpenChange={() => toggleCategoryExpanded(link.name)}
+                          <Collapsible
+                            className="w-full"
+                            open={expandedCategories[link.name]}
+                            onOpenChange={() =>
+                              toggleCategoryExpanded(link.name)
+                            }
                           >
                             <CollapsibleTrigger asChild>
-                              <Button 
-                                variant="ghost" 
+                              <Button
+                                variant="ghost"
                                 className="w-full px-3 font-normal justify-between text-md rounded-lg h-auto py-3"
                               >
                                 {link.name}
@@ -258,9 +314,11 @@ export default function Header() {
                                         <Link
                                           href={item.href}
                                           className="flex items-center text-sm px-3 py-2 rounded-md hover:bg-accent transition-colors"
-                                          onClick={() => setIsMobileMenuOpen(false)}
+                                          onClick={() =>
+                                            setIsMobileMenuOpen(false)
+                                          }
                                         >
-                                          <span>{item.name}</span>
+                                          {item.name}
                                         </Link>
                                       </li>
                                     ))}
@@ -293,23 +351,45 @@ export default function Header() {
                   <Button className="w-full bg-primary hover:bg-primary/90">
                     Book Consultation
                   </Button>
-                  
+
                   <div className="grid grid-cols-3 gap-2">
-                    <Button variant="outline" size="sm" className="w-full flex items-center justify-center">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full flex items-center justify-center"
+                    >
                       <Phone className="h-4 w-4" />
                     </Button>
-                    <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" className="w-full">
-                      <Button variant="outline" size="sm" className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700">
+                    <a
+                      href="https://wa.me/910000000000"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700"
+                      >
                         <FaWhatsapp className="h-4 w-4" />
                       </Button>
                     </a>
-                    <a href="viber://chat?number=910000000000" target="_blank" rel="noopener noreferrer" className="w-full">
-                      <Button variant="outline" size="sm" className="w-full bg-purple-50 text-purple-600 border-purple-200 hover:bg-purple-100 hover:text-purple-700">
+                    <a
+                      href="viber://chat?number=910000000000"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full bg-purple-50 text-purple-600 border-purple-200 hover:bg-purple-100 hover:text-purple-700"
+                      >
                         <FaViber className="h-4 w-4" />
                       </Button>
                     </a>
                   </div>
-                  
+
                   <div className="text-xs text-center text-muted-foreground">
                     Call or message us: 056-522482
                   </div>
@@ -327,7 +407,12 @@ export default function Header() {
           )}
         >
           <div className="flex items-center">
-            <Input type="search" placeholder="Search for products..." className="flex-1" autoFocus={isSearchOpen} />
+            <Input
+              type="search"
+              placeholder="Search for products..."
+              className="flex-1"
+              autoFocus={isSearchOpen}
+            />
             <Button className="ml-2">Search</Button>
           </div>
         </div>

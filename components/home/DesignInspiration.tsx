@@ -1,27 +1,27 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ChevronRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 const inspirationImages = [
   {
-    src: 'https://renovationcapital.com.au/wp-content/uploads/2023/01/Minimalist-Kitchen-scaled.jpeg',
-    title: 'Modern Minimalist',
+    src: "https://renovationcapital.com.au/wp-content/uploads/2023/01/Minimalist-Kitchen-scaled.jpeg",
+    title: "Modern Minimalist",
   },
   {
-    src: 'https://www.nobiliaindia.com/images/modern-c/easytouch-1.jpg',
-    title: 'Contemporary Elegance',
+    src: "https://www.nobiliaindia.com/images/modern-c/easytouch-1.jpg",
+    title: "Contemporary Elegance",
   },
   {
-    src: 'https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg',
-    title: 'Industrial Chic',
+    src: "https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg",
+    title: "Industrial Chic",
   },
   {
-    src: 'https://www.andreafanfani.com/images/kitchen/1-classic_paintings_on_canvas_italian_oil.jpg',
-    title: 'Classic Luxury',
+    src: "https://www.andreafanfani.com/images/kitchen/1-classic_paintings_on_canvas_italian_oil.jpg",
+    title: "Classic Luxury",
   },
 ];
 
@@ -30,12 +30,15 @@ export default function DesignInspiration() {
     <div className="py-20 bg-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">Design Inspiration</h2>
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+            Design Inspiration
+          </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Explore our gallery of stunning kitchen designs to inspire your next renovation project.
+            Explore our gallery of stunning kitchen designs to inspire your next
+            renovation project.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {inspirationImages.map((image, index) => (
             <motion.div
@@ -61,14 +64,14 @@ export default function DesignInspiration() {
             </motion.div>
           ))}
         </div>
-        
+
         <div className="text-center mt-12">
-          <Button asChild size="lg">
-            <Link href="/gallery">
+          <Link href="/gallery">
+            <Button size="lg">
               View Full Gallery
               <ChevronRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

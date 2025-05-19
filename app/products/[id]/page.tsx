@@ -1,18 +1,15 @@
-// app/products/[id]/page.tsx
-import { getProductById, getProductVariants, getAllProducts } from '@/lib/data';
-import { notFound } from 'next/navigation';
-import ProductDetails from '@/components/products/ProductDetails';
+import { getProductById, getProductVariants } from "@/lib/data";
+import { notFound } from "next/navigation";
+import ProductDetails from "@/components/products/ProductDetails";
 
-export async function generateStaticParams() {
-  const products = await getAllProducts();
-  return products.map((product) => ({ id: product.id }));
-}
+export default function ProductPage({ params }: { params: { id: string } }) {
+  const product = getProductById(params.id);
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
-  const product = await getProductById(params.id);
-  if (!product) return notFound();
+  if (!product) {
+    notFound();
+  }
 
-  const variants = await getProductVariants(product.id);
+  const variants = getProductVariants(product.id);
 
   return (
     <div className="container mx-auto py-12">

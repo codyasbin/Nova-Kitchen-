@@ -32,10 +32,7 @@ export default function CtaSection() {
                   Book a Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button
-                  size="lg"
-                  className="bg-white text-gray-900 hover:bg-gray-100"
-                >
+                <Button size="lg" variant="outline" className="text-black dark:text-white border-white hover:bg-white/10">
                   Explore Our Showroom
                 </Button>
               </div>

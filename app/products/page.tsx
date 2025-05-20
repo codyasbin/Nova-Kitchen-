@@ -1,17 +1,36 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import ProductList from "@/components/products/ProductList";
 import ProductFilters from "@/components/products/ProductFilters";
 import { getAllProducts } from "@/lib/data";
 import { Separator } from "@/components/ui/separator";
 
 export default function ProductsPage() {
+  const searchParams = useSearchParams();
   const [activeCategory, setActiveCategory] = useState("all");
   const [activeBrands, setActiveBrands] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [products, setProducts] = useState<any[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+
+  // Get search parameters from URL
+  useEffect(() => {
+    // Set search term from URL if present
+    const searchFromUrl = searchParams.get("search");
+    if (searchFromUrl) {
+      setSearchTerm(searchFromUrl);
+    } else {
+      setSearchTerm("");
+    }
+
+    // Set category from URL if present
+    const categoryFromUrl = searchParams.get("category");
+    if (categoryFromUrl) {
+      setActiveCategory(categoryFromUrl);
+    }
+  }, [searchParams]);
 
   // Fetch products on mount
   useEffect(() => {
@@ -50,6 +69,12 @@ export default function ProductsPage() {
     <div className="container mx-auto py-12">
       <div className="space-y-4 mb-8">
         <h1 className="text-4xl font-playfair font-bold">Our Products</h1>
+        {searchTerm && (
+          <p className="text-lg font-medium">
+            Search results for:{" "}
+            <span className="text-primary">"{searchTerm}"</span>
+          </p>
+        )}
         <p className="text-muted-foreground text-lg max-w-3xl">
           Discover our extensive range of premium kitchen solutions and
           appliances designed to transform your kitchen into a space of beauty
@@ -71,7 +96,18 @@ export default function ProductsPage() {
         </div>
 
         <div className="w-full lg:w-3/4">
-          <ProductList products={filteredProducts} />
+          {filteredProducts.length > 0 ? (
+            <ProductList products={filteredProducts} />
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">
+                No products found matching your criteria.
+              </p>
+              <p className="text-muted-foreground">
+                Try adjusting your search or filters.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

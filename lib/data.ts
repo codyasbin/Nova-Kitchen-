@@ -474,7 +474,7 @@ export const getGalleryProjects = () => {
       id: 1,
       name: "Modern Luxury Kitchen",
       category: "modular",
-      location: "Mumbai, Maharashtra",
+      location: "Kathmandu",
       images: [
         "https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg",
         "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg",
@@ -485,18 +485,18 @@ export const getGalleryProjects = () => {
       id: 2,
       name: "Contemporary Urban Kitchen",
       category: "modular",
-      location: "Bangalore, Karnataka",
+      location: "Pokhara",
       images: [
-        "https://images.pexels.com/photos/6207814/pexels-photo-6207814.jpeg",
-        "https://images.pexels.com/photos/6207795/pexels-photo-6207795.jpeg",
-        "https://images.pexels.com/photos/6207772/pexels-photo-6207772.jpeg",
+        "https://images.pexels.com/photos/6758515/pexels-photo-6758515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.pexels.com/photos/8089264/pexels-photo-8089264.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.pexels.com/photos/2089696/pexels-photo-2089696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ],
     },
     {
       id: 3,
       name: "Modern Apartment Interior",
       category: "interiors",
-      location: "Delhi, NCR",
+      location: "Bharatpur, Chitwan",
       images: [
         "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
         "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg",
@@ -507,7 +507,7 @@ export const getGalleryProjects = () => {
       id: 4,
       name: "Restaurant Kitchen Design",
       category: "commercial",
-      location: "Hyderabad, Telangana",
+      location: "Lalitpur",
       images: [
         "https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg",
         "https://images.pexels.com/photos/3201921/pexels-photo-3201921.jpeg",
@@ -518,23 +518,83 @@ export const getGalleryProjects = () => {
       id: 5,
       name: "Minimalist Kitchen Design",
       category: "modular",
-      location: "Pune, Maharashtra",
+      location: "Ratnanagar, Chitwan",
       images: [
-        "https://images.pexels.com/photos/7031414/pexels-photo-7031414.jpeg",
-        "https://images.pexels.com/photos/7031417/pexels-photo-7031417.jpeg",
-        "https://images.pexels.com/photos/7031618/pexels-photo-7031618.jpeg",
+        "https://images.pexels.com/photos/27065116/pexels-photo-27065116/free-photo-of-wooden-furniture-in-a-kitchen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.pexels.com/photos/6297088/pexels-photo-6297088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://images.pexels.com/photos/3505699/pexels-photo-3505699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ],
     },
     {
       id: 6,
       name: "Luxury Villa Interior",
       category: "interiors",
-      location: "Goa",
+      location: "Bhaktapur",
       images: [
         "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg",
         "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
         "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg",
       ],
+    },
+  ];
+};
+
+// Testimonials Data
+export const getTestimonials = () => {
+  return [
+    {
+      id: 1,
+      name: "Aarav Sharma",
+      location: "Kathmandu",
+      image:
+        "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      rating: 5,
+      text: "Nova Kitchen transformed our outdated kitchen into a modern, functional space that has become the heart of our home. Their attention to detail and quality craftsmanship exceeded our expectations.",
+    },
+    {
+      id: 2,
+      name: "Priya Thapa",
+      location: "Pokhara",
+      image:
+        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      rating: 5,
+      text: "From design to installation, the team at Nova showed exceptional professionalism. They understood our requirements perfectly and delivered a kitchen that perfectly balances aesthetics and functionality.",
+    },
+    {
+      id: 3,
+      name: "Rohan Gurung",
+      location: "Bharatpur",
+      image:
+        "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      rating: 4,
+      text: "We were impressed by the range of options available and the expert guidance provided. Our modular kitchen is not just beautiful but designed for maximum efficiency. Couldn't be happier!",
+    },
+    {
+      id: 4,
+      name: "Sita Poudel",
+      location: "Lalitpur",
+      image:
+        "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      rating: 5,
+      text: "The quality of materials and attention to detail is outstanding. Nova Kitchen & Interiors helped us create a kitchen that is both stylish and practical. Their after-sales service is excellent too.",
+    },
+    {
+      id: 5,
+      name: "Anish Maharjan",
+      location: "Bhaktapur",
+      image:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      rating: 5,
+      text: "I was hesitant about renovating my kitchen, but Nova Kitchen made the process seamless. Their team was professional, and the end result exceeded my expectations. Highly recommended!",
+    },
+    {
+      id: 6,
+      name: "Nirmala KC",
+      location: "Butwal",
+      image:
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      rating: 4,
+      text: "The Nova Kitchen team was patient with our many design changes and delivered a beautiful kitchen within our budget. Their after-sales service has been prompt and reliable.",
     },
   ];
 };
@@ -553,4 +613,13 @@ export type Product = {
   description: string;
   specifications?: string[];
   features?: string[];
+};
+
+export type Testimonial = {
+  id: number;
+  name: string;
+  location: string;
+  image: string;
+  rating: number;
+  text: string;
 };

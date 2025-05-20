@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import { useState } from "react";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Form,
   FormControl,
@@ -14,16 +14,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Card } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+} from "@/components/ui/form";
+import { Card } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  phone: z.string().min(10, { message: 'Please enter a valid phone number.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  phone: z.string().min(10, { message: "Please enter a valid phone number." }),
+  message: z
+    .string()
+    .min(10, { message: "Message must be at least 10 characters." }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -31,20 +33,20 @@ type FormValues = z.infer<typeof formSchema>;
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
     },
   });
 
   function onSubmit(data: FormValues) {
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       toast({
@@ -61,64 +63,68 @@ export default function ContactPage() {
       <div className="max-w-3xl mx-auto mb-12 text-center">
         <h1 className="text-4xl font-playfair font-bold mb-4">Contact Us</h1>
         <p className="text-muted-foreground text-lg">
-          We'd love to hear from you. Get in touch with our team for any queries or to schedule a visit to our showroom.
+          We'd love to hear from you. Get in touch with our team for any queries
+          or to schedule a visit to our showroom.
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <Card className="p-6 col-span-1 lg:col-span-1 h-min">
           <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-          
+
           <div className="space-y-6">
             <div className="flex items-start">
               <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5" />
               <div>
                 <h4 className="font-medium">Visit Our Showroom</h4>
                 <p className="text-muted-foreground text-sm mt-1">
-                 MCXF+C9W Swastik Furniture, Near, Bharatpur 44200 <br />
-                 Milan Rd, Bharatpur 44200
+                  MCXF+C9W Swastik Furniture, Near, Bharatpur 44200 <br />
+                  Milan Rd, Bharatpur 44200
                 </p>
               </div>
             </div>
-            
+
             <div className="flex items-start">
               <Phone className="h-5 w-5 text-primary mr-3 mt-0.5" />
               <div>
                 <h4 className="font-medium">Call Us</h4>
                 <p className="text-muted-foreground text-sm mt-1">
-                  +91 9876543210<br />
+                  +91 9876543210
+                  <br />
                   +91 2234567890
                 </p>
               </div>
             </div>
-            
+
             <div className="flex items-start">
               <Mail className="h-5 w-5 text-primary mr-3 mt-0.5" />
               <div>
                 <h4 className="font-medium">Email Us</h4>
                 <p className="text-muted-foreground text-sm mt-1">
-                  info@novakitchens.com<br />
+                  info@novakitchens.com
+                  <br />
                   support@novakitchens.com
                 </p>
               </div>
             </div>
-            
+
             <div className="flex items-start">
               <Clock className="h-5 w-5 text-primary mr-3 mt-0.5" />
               <div>
                 <h4 className="font-medium">Working Hours</h4>
                 <p className="text-muted-foreground text-sm mt-1">
-                  Monday - Saturday: 10:00 AM - 8:00 PM<br />
+                  Monday - Saturday: 10:00 AM - 8:00 PM
+                  <br />
                   Sunday: 11:00 AM - 6:00 PM
                 </p>
               </div>
             </div>
           </div>
         </Card>
-        
+
         <Card className="p-6 col-span-1 lg:col-span-2">
           <h3 className="text-xl font-semibold mb-6">Send Us a Message</h3>
-          
+
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -135,7 +141,7 @@ export default function ContactPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={form.control}
                   name="email"
@@ -150,7 +156,7 @@ export default function ContactPage() {
                   )}
                 />
               </div>
-              
+
               <FormField
                 control={form.control}
                 name="phone"
@@ -164,7 +170,7 @@ export default function ContactPage() {
                   </FormItem>
                 )}
               />
-              
+
               <FormField
                 control={form.control}
                 name="message"
@@ -172,29 +178,34 @@ export default function ContactPage() {
                   <FormItem>
                     <FormLabel>Message</FormLabel>
                     <FormControl>
-                      <Textarea 
-                        placeholder="Tell us about your kitchen requirements" 
-                        className="min-h-[120px]" 
-                        {...field} 
+                      <Textarea
+                        placeholder="Tell us about your kitchen requirements"
+                        className="min-h-[120px]"
+                        {...field}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              
+
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Form>
         </Card>
       </div>
-      
+
       <div className="mt-16">
         <h3 className="text-2xl font-bold mb-4 flex items-center justify-center gap-2">
           <span>
-        <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"></path></svg>
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+              <path
+                fill="#2563eb"
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"
+              ></path>
+            </svg>
           </span>
           Find Us Here
         </h3>
@@ -203,50 +214,60 @@ export default function ContactPage() {
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col items-center bg-white rounded-xl shadow-lg border transition hover:shadow-2xl">
-        <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.6048962870914!2d84.42087921104606!3d27.698603976088307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fbf9b475ee57%3A0xa7ca91d2a73ccfeb!2sNova%20Kitchen%20%26%20Interiors!5e0!3m2!1sen!2snp!4v1747559068586!5m2!1sen!2snp"
-            width="100%"
-            height="100%"
-            style={{ border: 0, minHeight: 320 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Nova Kitchen & Interiors"
-          ></iframe>
-        </div>
-        <div className="flex items-center gap-2 py-4 px-6 w-full justify-center">
-          <span className="text-primary text-xl">
-            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"></path></svg>
-          </span>
-          <span className="font-semibold">Nova Kitchen & Interiors</span>
-        </div>
-        <div className="text-center text-muted-foreground pb-4 px-6 text-sm">
-          MCXF+C9W Swastik Furniture, Near, Bharatpur 44200
-        </div>
+            <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.6048962870914!2d84.42087921104606!3d27.698603976088307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fbf9b475ee57%3A0xa7ca91d2a73ccfeb!2sNova%20Kitchen%20%26%20Interiors!5e0!3m2!1sen!2snp!4v1747559068586!5m2!1sen!2snp"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: 320 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Nova Kitchen & Interiors"
+              ></iframe>
+            </div>
+            <div className="flex items-center gap-2 py-4 px-6 w-full justify-center">
+              <span className="text-primary text-xl">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
+                  <path
+                    fill="#2563eb"
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"
+                  ></path>
+                </svg>
+              </span>
+              <span className="font-semibold">Nova Kitchen & Interiors</span>
+            </div>
+            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">
+              MCXF+C9W Swastik Furniture, Near, Bharatpur 44200
+            </div>
           </div>
           <div className="flex flex-col items-center bg-white rounded-xl shadow-lg border transition hover:shadow-2xl">
-        <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10056.603318518204!2d84.42669048778261!3d27.692587642314525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fb475f60ebbf%3A0x63c8bfbdd44876d6!2sMilan%20Rd%2C%20Bharatpur%2044200!5e0!3m2!1sen!2snp!4v1747562242134!5m2!1sen!2snp"
-            width="100%"
-            height="100%"
-            style={{ border: 0, minHeight: 320 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Milan Road, Bharatpur"
-          ></iframe>
-        </div>
-        <div className="flex items-center gap-2 py-4 px-6 w-full justify-center">
-          <span className="text-primary text-xl">
-            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"></path></svg>
-          </span>
-          <span className="font-semibold">Milan Road, Bharatpur</span>
-        </div>
-        <div className="text-center text-muted-foreground pb-4 px-6 text-sm">
-          Milan Rd, Bharatpur 44200
-        </div>
+            <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15311.500224816396!2d84.43150212194038!3d27.670381334454856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994e52a2b5749dd%3A0xca45722361cf550a!2sMilan%20Chowk!5e0!3m2!1sen!2snp!4v1747718224791!5m2!1sen!2snp"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: 320 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Nova Kitchen & Interiors"
+              ></iframe>
+            </div>
+            <div className="flex items-center gap-2 py-4 px-6 w-full justify-center">
+              <span className="text-primary text-xl">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
+                  <path
+                    fill="#2563eb"
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"
+                  ></path>
+                </svg>
+              </span>
+              <span className="font-semibold">Milan Chowk, Bharatpur</span>
+            </div>
+            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">
+              Milan Rd, Bharatpur 44200
+            </div>
           </div>
         </div>
       </div>

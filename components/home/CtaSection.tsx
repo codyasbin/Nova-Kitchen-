@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export default function CtaSection() {
   return (
@@ -21,14 +21,21 @@ export default function CtaSection() {
                 Ready to Transform Your Kitchen?
               </h2>
               <p className="text-lg text-gray-300 mb-8">
-                Schedule a consultation with our design experts today. We'll help you create the kitchen of your dreams.
+                Schedule a consultation with our design experts today. We'll
+                help you create the kitchen of your dreams.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
+                <Button
+                  size="lg"
+                  className="bg-white text-gray-900 hover:bg-gray-100"
+                >
                   Book a Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+                <Button
+                  size="lg"
+                  className="bg-white text-gray-900 hover:bg-gray-100"
+                >
                   Explore Our Showroom
                 </Button>
               </div>

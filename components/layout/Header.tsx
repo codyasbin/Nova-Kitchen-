@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import {
@@ -133,6 +133,7 @@ export default function Header() {
   const [expandedCategories, setExpandedCategories] = useState<
     Record<string, boolean>
   >({});
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -406,15 +407,43 @@ export default function Header() {
             isSearchOpen ? "max-h-20 opacity-100 py-4" : "max-h-0 opacity-0"
           )}
         >
-          <div className="flex items-center">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const searchInput = e.currentTarget.querySelector(
+                "input"
+              ) as HTMLInputElement;
+              const searchTerm = searchInput.value.trim();
+              if (searchTerm) {
+                // Check if we're already on the products page
+                if (pathname === "/products") {
+                  // Force a full navigation to refresh the page with new search params
+                  window.location.href = `/products?search=${encodeURIComponent(
+                    searchTerm
+                  )}`;
+                } else {
+                  // Use router for normal navigation
+                  router.push(
+                    `/products?search=${encodeURIComponent(searchTerm)}`
+                  );
+                }
+                setIsSearchOpen(false);
+                searchInput.value = "";
+              }
+            }}
+            className="flex items-center"
+          >
             <Input
               type="search"
+              name="search"
               placeholder="Search for products..."
               className="flex-1"
               autoFocus={isSearchOpen}
             />
-            <Button className="ml-2">Search</Button>
-          </div>
+            <Button type="submit" className="ml-2">
+              Search
+            </Button>
+          </form>
         </div>
       </div>
     </header>

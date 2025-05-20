@@ -63,7 +63,7 @@ export default function ProductFilters({
         <form onSubmit={handleSearchSubmit} className="relative">
           <Input
             type="search"
-            placeholder="Search products..."
+            placeholder={searchTerm?searchTerm:"Search Products"}
             value={localSearchTerm}
             onChange={e => setLocalSearchTerm(e.target.value)}
             className="pr-10"

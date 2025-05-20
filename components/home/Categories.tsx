@@ -58,7 +58,7 @@ const categories = [
     description: "Efficient cooling solutions for your home",
     image:
       "https://www.lg.com/eastafrica/images/microsite/rac-product-buying-guide/LG-Air-conditioner-Buying-Guide-2-M.jpg",
-    href: "/products?category=air-cooler",
+    href: "/products?category=ac",
   },
   {
     id: "other-products",

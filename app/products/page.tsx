@@ -27,8 +27,12 @@ export default function ProductsPage() {
 
     // Set category from URL if present
     const categoryFromUrl = searchParams.get("category");
+    const typefromUrl = searchParams.get("type")?.replace(/-/g, " ");
     if (categoryFromUrl) {
       setActiveCategory(categoryFromUrl);
+    }
+    if (typefromUrl) {
+     setSearchTerm(typefromUrl);
     }
   }, [searchParams]);
 

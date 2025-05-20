@@ -31,7 +31,7 @@ const products = [
   // Modular Kitchens
   {
     id: "l-shaped-luxury-kitchen",
-    name: "L-Shaped Luxury Kitchen",
+    name: "L Shaped Luxury Kitchen",
     brand: "Nova",
     category: "modular-kitchen",
     subcategory: "L-Shaped",
@@ -41,7 +41,7 @@ const products = [
     bestseller: true,
     images: [
       "https://lsmedia.linker-cdn.net/290030/2022/7817183.jpeg",
-      "https://indofurnishing.co.in/wp-content/uploads/2024/02/9.jpeg",
+      "https://assets-news.housing.com/news/wp-content/uploads/2022/01/25212848/L-shape-modular-kitchen-design-12-Indian-designs-that-can-transform-your-kitchen-image-10.jpg",
       "https://cdn.alittledelightful.com/wp-content/uploads/2023/07/Stunning-L-Shaped-Kitchen-with-Island-Ideas.jpeg",
       "https://urbandesignco.in/images/kitchen/asset%2030-min.webp",
     ],
@@ -135,6 +135,42 @@ const products = [
       "High-end appliance integration",
       "Custom hood and ventilation options",
       "Designated entertaining spaces",
+    ],
+  },
+  {
+    id: "u-shaped-kitchen",
+    name: "U Shaped Kitchen",
+    brand: "Nova",
+    category: "modular-kitchen",
+    subcategory: "U-Shaped",
+    price: 320000,
+    originalPrice: 360000,
+    discount: 11,
+    bestseller: false,
+    images: [
+      "https://media.designcafe.com/wp-content/uploads/2023/08/11164812/l-shaped-kitchen-with-dining-table-design.jpg",
+      "https://telkitchens.in/srckchn/uploads/2022/03/A-U-Shaped-kitchen-design-in-pristine-white-glossy-marble-worktop.jpg",
+      "https://media.designcafe.com/wp-content/uploads/2021/12/04203322/modern-u-shaped-kitchen-designs.jpg",
+      "https://b3245786.smushcdn.com/3245786/wp-content/uploads/sites/39/slider/cache/9010b289eac331e6d9d66a08cf526d18/ST-026-Bond-008-1.jpg?lossy=2&strip=1&webp=1",
+    ],
+    description:
+      "A U-shaped kitchen design that maximizes storage and workspace, ideal for larger kitchens. The three walls of cabinetry provide ample storage and a functional layout for cooking and entertaining.",
+    specifications: [
+      "Dimensions: Customizable",
+      "Primary Material: High-quality plywood with laminate finish",
+      "Finish: Matte or glossy options available",
+      "Hardware: Soft-close hinges and drawer systems",
+      "Countertop: Granite or quartz options available",
+      "Backsplash: Designer tiles or glass options available",
+    ],
+    features: [
+      "Ample storage solutions",
+      "Integrated lighting options",
+      "Ergonomic design for ease of use",
+      "Customizable cabinet layouts",
+      "Moisture-resistant finishes",
+      "Easy-clean surfaces",
+      "Contemporary handle designs available",
     ],
   },
 

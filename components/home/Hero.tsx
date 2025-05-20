@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 const slides = [
   {
@@ -89,10 +90,12 @@ export default function Hero() {
                 {slides[currentSlide].subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/products">
                 <Button size="lg" className="bg-primary hover:bg-primary/90">
                   Explore Products
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
+                </Link>
                 <Button size="lg" variant="outline" className="border-white text-black hover:bg-white dark:bg-white hover:text-black">
                   Book Consultation
                 </Button>

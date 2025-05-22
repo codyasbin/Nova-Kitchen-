@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -127,7 +127,6 @@ const navLinks: NavItem[] = [
 
 export default function Header() {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState<
@@ -135,30 +134,15 @@ export default function Header() {
   >({});
   const router = useRouter();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const toggleCategoryExpanded = (name: string) => {
+  const toggleCategoryExpanded = (categoryName: string) => {
     setExpandedCategories((prev) => ({
       ...prev,
-      [name]: !prev[name],
+      [categoryName]: !prev[categoryName],
     }));
   };
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-sm border-b shadow-sm"
-          : "bg-transparent"
-      )}
-    >
+    <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b shadow-sm">
       <div className="container mx-auto">
         <div className="flex h-16 md:h-20 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">

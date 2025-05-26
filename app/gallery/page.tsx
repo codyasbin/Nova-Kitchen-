@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { getGalleryProjects, getTestimonials } from "@/lib/data";
+import { Play } from "lucide-react";
 
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -141,37 +142,122 @@ type GalleryGridProps = {
   setSelectedImage: (image: string) => void;
 };
 
+// Helper function to extract YouTube video ID from URL (including Shorts)
+function getYouTubeVideoId(url: string): string | null {
+  // Handle various YouTube URL formats including Shorts
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)([^#&?]{11})/,
+    /youtube\.com\/watch\?.*v=([^#&?]{11})/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
+
+  return null;
+}
+
+// Helper function to get YouTube thumbnail URL
+function getYouTubeThumbnail(videoId: string): string {
+  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+}
+
 function GalleryGrid({ projects, setSelectedImage }: GalleryGridProps) {
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((project) => (
-        <div key={project.id} className="space-y-4">
-          <div className="grid grid-cols-2 gap-2">
-            {project.images.slice(0, 3).map((image: string, index: number) => (
+      {projects.map((project) => {
+        // Assume the first item in images array is either a YouTube URL or regular image
+        const firstItem = project.images[0];
+        const videoId = getYouTubeVideoId(firstItem);
+        const isVideo = !!videoId;
+
+        return (
+          <div key={project.id} className="space-y-4">
+            <div className="grid grid-cols-2 gap-2">
+              {/* First larger item - video or image */}
               <motion.div
-                key={image}
-                className={`relative rounded-lg overflow-hidden cursor-pointer ${
-                  index === 0 ? "col-span-2 aspect-[16/9]" : "aspect-square"
-                }`}
+                className="col-span-2 aspect-[16/9] relative rounded-lg overflow-hidden cursor-pointer"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.2 }}
-                onClick={() => setSelectedImage(image)}
+                onClick={() => {
+                  if (isVideo && videoId) {
+                    setPlayingVideo(playingVideo === videoId ? null : videoId);
+                  } else {
+                    setSelectedImage(firstItem);
+                  }
+                }}
               >
-                <Image
-                  src={image || "/placeholder.svg"}
-                  alt={`Project ${project.name} image ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
+                {isVideo && videoId ? (
+                  <>
+                    {playingVideo === videoId ? (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                        title={`${project.name} video`}
+                        className="w-full h-full"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <>
+                        <Image
+                          src={getYouTubeThumbnail(videoId)}
+                          alt={`${project.name} video thumbnail`}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                          <div className="bg-red-600 rounded-full p-4 shadow-lg">
+                            <Play className="w-8 h-8 text-white fill-white ml-1" />
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <Image
+                    src={firstItem || "/placeholder.svg"}
+                    alt={`Project ${project.name} image 1`}
+                    fill
+                    className="object-cover"
+                  />
+                )}
               </motion.div>
-            ))}
+
+              {/* Remaining images */}
+              {project.images
+                .slice(1, 3)
+                .map((image: string, index: number) => (
+                  <motion.div
+                    key={image}
+                    className="aspect-square relative rounded-lg overflow-hidden cursor-pointer"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.2 }}
+                    onClick={() => setSelectedImage(image)}
+                  >
+                    <Image
+                      src={image || "/placeholder.svg"}
+                      alt={`Project ${project.name} image ${index + 2}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </motion.div>
+                ))}
+            </div>
+            <div>
+              <h3 className="font-medium">{project.name}</h3>
+              <p className="text-sm text-muted-foreground">
+                {project.location}
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="font-medium">{project.name}</h3>
-            <p className="text-sm text-muted-foreground">{project.location}</p>
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

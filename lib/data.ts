@@ -512,7 +512,7 @@ export const getGalleryProjects = () => {
       category: "modular",
       location: "Kathmandu",
       images: [
-        "https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg",
+        "https://www.youtube.com/shorts/C55BRRIwuhc",
         "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg",
         "https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg",
       ],
@@ -523,7 +523,7 @@ export const getGalleryProjects = () => {
       category: "modular",
       location: "Pokhara",
       images: [
-        "https://images.pexels.com/photos/6758515/pexels-photo-6758515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://www.youtube.com/shorts/G4ZXX3Q_NVc",
         "https://images.pexels.com/photos/8089264/pexels-photo-8089264.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "https://images.pexels.com/photos/2089696/pexels-photo-2089696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ],
@@ -534,7 +534,7 @@ export const getGalleryProjects = () => {
       category: "interiors",
       location: "Bharatpur, Chitwan",
       images: [
-        "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
+        "https://www.youtube.com/shorts/gevWdBHD1wE",
         "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg",
         "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg",
       ],
@@ -545,7 +545,7 @@ export const getGalleryProjects = () => {
       category: "commercial",
       location: "Lalitpur",
       images: [
-        "https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg",
+        "https://www.youtube.com/shorts/PDvWS9b27xI",
         "https://images.pexels.com/photos/3201921/pexels-photo-3201921.jpeg",
         "https://images.pexels.com/photos/3201920/pexels-photo-3201920.jpeg",
       ],
@@ -556,7 +556,8 @@ export const getGalleryProjects = () => {
       category: "modular",
       location: "Ratnanagar, Chitwan",
       images: [
-        "https://images.pexels.com/photos/27065116/pexels-photo-27065116/free-photo-of-wooden-furniture-in-a-kitchen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "https://www.youtube.com/shorts/d4S09Z1c2gk",
+
         "https://images.pexels.com/photos/6297088/pexels-photo-6297088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "https://images.pexels.com/photos/3505699/pexels-photo-3505699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       ],
@@ -567,7 +568,7 @@ export const getGalleryProjects = () => {
       category: "interiors",
       location: "Bhaktapur",
       images: [
-        "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg",
+        "https://www.youtube.com/shorts/Ra2R0MB0YUs",
         "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
         "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg",
       ],

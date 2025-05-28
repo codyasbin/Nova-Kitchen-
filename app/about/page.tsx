@@ -100,14 +100,14 @@ export default function AboutPage() {
                   {["Laminate Matt Finishing", "Hi Glass"].map((item, i) => (
                     <div
                       key={item}
-                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-green-100 shadow-sm group-hover:bg-green-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
+                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-green-100 shadow-[0_0_12px_rgba(34,197,94,0.4)] group-hover:shadow-[0_0_18px_rgba(34,197,94,0.7)] group-hover:bg-green-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
                         i * 75
                       }ms]`}
                     >
                       <svg className="w-5 h-5 text-green-600 mr-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="font-medium text-gray-800">{item}</span>
+                      <span className="font-semibold text-gray-800">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -134,14 +134,14 @@ export default function AboutPage() {
                   {["Acrylic Finishing", "Premium Materials"].map((item, i) => (
                     <div
                       key={item}
-                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-blue-100 shadow-sm group-hover:bg-blue-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
+                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-blue-100 shadow-[0_0_12px_rgba(59,130,246,0.4)] group-hover:shadow-[0_0_18px_rgba(59,130,246,0.7)] group-hover:bg-blue-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
                         i * 75
                       }ms]`}
                     >
                       <svg className="w-5 h-5 text-blue-600 mr-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="font-medium text-gray-800">{item}</span>
+                      <span className="font-semibold text-gray-800">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -168,14 +168,14 @@ export default function AboutPage() {
                   {["Membrane", "Acrylic", "PV", "Glass"].map((item, i) => (
                     <div
                       key={item}
-                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-purple-100 shadow-sm group-hover:bg-purple-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
+                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-purple-100 shadow-[0_0_12px_rgba(168,85,247,0.4)] group-hover:shadow-[0_0_18px_rgba(168,85,247,0.7)] group-hover:bg-purple-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
                         i * 75
                       }ms]`}
                     >
                       <svg className="w-5 h-5 text-purple-600 mr-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="font-medium text-gray-800">{item}</span>
+                      <span className=" text-gray-800 font-semibold">{item}</span>
                     </div>
                   ))}
                 </div>

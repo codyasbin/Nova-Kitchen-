@@ -20,7 +20,7 @@ export default function AboutPage() {
           </p>
           <p className="text-muted-foreground mb-4">
             We specialize in designing various types of kitchens, including L-shape, B-shape, G-shape, and straight-line configurations. Our offerings come in a range of premium finishes, such as
-            laminate, acrylic, membrane, PV, and glass, tailored to meet your unique needs. Each design ensures your dream kitchen is not only exclusive and glamorous but also a true reflection of
+            laminate, acrylic, membrane, PU, and glass, tailored to meet your unique needs. Each design ensures your dream kitchen is not only exclusive and glamorous but also a true reflection of
             your personality.
           </p>
           <p className="text-muted-foreground mb-4">
@@ -97,7 +97,7 @@ export default function AboutPage() {
                   <p className="text-gray-600 font-light text-lg">Affordable solutions without compromising quality</p>
                 </div>
                 <div className="space-y-4 mt-auto">
-                  {["Laminate Matt Finishing", "Hi Glass"].map((item, i) => (
+                  {["Laminate Matt Finishing", "Hi Gloss"].map((item, i) => (
                     <div
                       key={item}
                       className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-green-100 shadow-[0_0_12px_rgba(34,197,94,0.4)] group-hover:shadow-[0_0_18px_rgba(34,197,94,0.7)] group-hover:bg-green-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
@@ -165,7 +165,7 @@ export default function AboutPage() {
                   <p className="text-gray-600 font-light text-lg">Premium materials with exquisite craftsmanship</p>
                 </div>
                 <div className="space-y-4 mt-auto">
-                  {["Membrane", "Acrylic", "PV", "Glass"].map((item, i) => (
+                  {["Membrane", "Acrylic", "PU", "Glass"].map((item, i) => (
                     <div
                       key={item}
                       className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-purple-100 shadow-[0_0_12px_rgba(168,85,247,0.4)] group-hover:shadow-[0_0_18px_rgba(168,85,247,0.7)] group-hover:bg-purple-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${

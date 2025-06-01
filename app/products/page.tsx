@@ -4,16 +4,33 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductList from "@/components/products/ProductList";
 import ProductFilters from "@/components/products/ProductFilters";
-import { getAllProducts } from "@/lib/data";
+
 import { Separator } from "@/components/ui/separator";
+import ProductService, { Category, Brand} from "@/app/api/productService"; // Update this import path
+
 
 export default function ProductsPage() {
   const searchParams = useSearchParams();
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [brands, setBrands] = useState<Brand[]>([]);
   const [activeCategory, setActiveCategory] = useState("all");
   const [activeBrands, setActiveBrands] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [products, setProducts] = useState<any[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+
+
+  useEffect(() => {
+      const categories =async () => {
+        const response = await ProductService.getCategories();
+        const brandsResponse = await ProductService.getBrands();
+       
+        setBrands(brandsResponse.results);
+        setCategories(response.results);
+      }
+      categories();
+  }, []);
+    
 
   // Get search parameters from URL
   useEffect(() => {
@@ -38,8 +55,16 @@ export default function ProductsPage() {
 
   // Fetch products on mount
   useEffect(() => {
-    const allProducts = getAllProducts();
-    setProducts(allProducts);
+    const fetchProducts = async () => {
+      const allProducts = await ProductService.getProducts();
+       const productByCategory = await ProductService.getProductsByCategory(activeCategory);
+      if (activeCategory !== "all" && productByCategory.results.length > 0) {
+        setProducts(productByCategory.results);
+      } else {  
+        setProducts(allProducts.results);
+      }
+    };
+    fetchProducts();
   }, []);
 
   // Filter products when filters change
@@ -96,6 +121,8 @@ export default function ProductsPage() {
             setActiveBrands={setActiveBrands}
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
+            categories={categories.map((cat) => ({ ...cat, id: String(cat.id) }))}
+            brands={brands.map((brand) => String(brand.name))}
           />
         </div>
 

@@ -14,7 +14,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 
-export default function ProductGallery({ images }: { images: string[] }) {
+export default function ProductGallery({ images }: { images: { image: string }[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   
@@ -40,7 +40,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
               className="absolute inset-0"
             >
               <Image
-                src={images[currentIndex]}
+                src={images[currentIndex].image}
                 alt={`Product image ${currentIndex + 1}`}
                 fill
                 className="object-cover"
@@ -84,7 +84,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
             </DialogHeader>
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
               <Image
-                src={images[currentIndex]}
+                src={images[currentIndex].image}
                 alt={`Product image ${currentIndex + 1}`}
                 fill
                 className="object-contain"
@@ -104,7 +104,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
             onClick={() => setCurrentIndex(index)}
           >
             <Image
-              src={image}
+              src={image.image}
               alt={`Product thumbnail ${index + 1}`}
               fill
               className="object-cover"

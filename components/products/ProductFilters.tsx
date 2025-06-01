@@ -13,7 +13,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { X, Search } from 'lucide-react';
-import { getBrands, getCategories } from '@/lib/data';
+
 
 type ProductFiltersProps = {
   activeCategory: string;
@@ -22,6 +22,8 @@ type ProductFiltersProps = {
   setActiveBrands: (brands: string[]) => void;
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  categories?: { id: string; name: string }[];
+  brands?: string[];
 };
 
 export default function ProductFilters({
@@ -31,11 +33,12 @@ export default function ProductFilters({
   setActiveBrands,
   searchTerm,
   setSearchTerm,
+  categories,
+  brands
 }: ProductFiltersProps) {
   const [localSearchTerm, setLocalSearchTerm] = useState(searchTerm);
   
-  const categories = getCategories();
-  const brands = getBrands();
+
   
   const handleBrandToggle = (brand: string) => {
     if (activeBrands.includes(brand)) {
@@ -113,12 +116,12 @@ export default function ProductFilters({
                 </Label>
               </div>
               
-              {categories.map(category => (
+              {categories && categories.map(category => (
                 <div key={category.id} className="flex items-center space-x-2">
                   <Checkbox
                     id={category.id}
-                    checked={activeCategory === category.id}
-                    onCheckedChange={() => setActiveCategory(category.id)}
+                    checked={activeCategory === category.name}
+                    onCheckedChange={() => setActiveCategory(category.name)}
                   />
                   <Label
                     htmlFor={category.id}
@@ -136,7 +139,7 @@ export default function ProductFilters({
           <AccordionTrigger>Brands</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-2">
-              {brands.map(brand => (
+              {brands && brands.map(brand => (
                 <div key={brand} className="flex items-center space-x-2">
                   <Checkbox
                     id={`brand-${brand}`}

@@ -15,6 +15,7 @@ export default function ProductList({ products }: { products: any[] }) {
       </div>
     );
   }
+  console.log(products)
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -25,13 +26,14 @@ export default function ProductList({ products }: { products: any[] }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: index * 0.05 }}
         >
+          
           <Link
             href={`/products/${product.id}`}
             className="group bg-background rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-all"
           >
             <div className="relative aspect-square overflow-hidden">
               <Image
-                src={product.images[0] || "/placeholder.svg"}
+                src={product.images[0].image || "/placeholder.svg"}
                 alt={product.name}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -41,7 +43,7 @@ export default function ProductList({ products }: { products: any[] }) {
                   {product.discount}% OFF
                 </span>
               )}
-              {product.bestseller && (
+              {product.best_seller && (
                 <span className="absolute top-2 right-2 z-10 bg-amber-500 text-white text-xs font-medium px-2 py-1 rounded flex items-center">
                   <Star className="h-3 w-3 mr-1 fill-white" />
                   Bestseller
@@ -56,11 +58,14 @@ export default function ProductList({ products }: { products: any[] }) {
                 {product.name}
               </h3>
               <div className="flex items-baseline mt-2">
-                <span className="text-lg font-semibold">₹{product.price}</span>
-                {product.originalPrice && (
-                  <span className="ml-2 text-sm text-muted-foreground line-through">
-                    ₹{product.originalPrice}
-                  </span>
+                <span className="text-lg font-semibold">₹{(product.price - (product.price * product.discount) / 100).toFixed(2)}</span>
+              
+                {product.discount && (
+                  <>
+                    <span className="ml-2 text-sm text-muted-foreground line-through">
+                      ₹{product.price}
+                    </span>
+                  </>
                 )}
               </div>
             </div>

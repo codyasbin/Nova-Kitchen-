@@ -12,12 +12,14 @@ import { Bookmark, Check, Info, Phone, Share2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function ProductDetails({ product, variants }: { product: any; variants: any[] }) {
+  console.log('Product Details:', product);
+  console.log('Variants:', variants);
   const [selectedVariant, setSelectedVariant] = useState(0);
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <ProductGallery images={variants[selectedVariant]?.images || product.images} />
+        <ProductGallery images={variants[selectedVariant]?.images || product.images } />
 
         <div className="space-y-6">
           <div>

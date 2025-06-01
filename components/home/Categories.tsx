@@ -5,72 +5,39 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 
-const categories = [
-  {
-    id: "modular-kitchen",
-    name: "Modular Kitchens",
-    description: "Custom designed functional kitchen spaces",
-    image:
-      "https://media.designcafe.com/wp-content/uploads/2020/05/09150825/blue-and-white-modular-kitchen-design.jpg",
-    href: "/products?category=modular-kitchen",
-  },
-  {
-    id: "appliances",
-    name: "Kitchen Appliances",
-    description: "Premium quality appliances for modern kitchens",
-    image: "https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg",
-    href: "/products?category=appliances",
-  },
-  {
-    id: "water-purifier",
-    name: "Water Purifiers",
-    description: "Advanced water purification solutions",
-    image:
-      "https://www.cuckoo.com.my/wp-content/uploads/2024/04/Grande-feature-images.png",
-    href: "/products?category=water-purifier",
-  },
-  {
-    id: "interior",
-    name: "Interior Solutions",
-    description: "Beautiful interior designs for your home",
-    image: "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg",
-    href: "/products?category=interior",
-  },
-  {
-    id: "kitchen-accessories",
-    name: "Kitchen Accessories",
-    description: "Essential accessories for your kitchen",
-    image:
-      "https://stoneintl.net/wp-content/uploads/2024/01/interior-of-kitchen-and-details-of-decor-of-utensi-2023-11-27-04-50-17-utc-min-scaled.jpg",
-    href: "/products?category=kitchen-accessories",
-  },
-  {
-    id: "solar-heater",
-    name: "Solar Water Heaters",
-    description: "Eco-friendly solar water heating solutions",
-    image:
-      "https://www.lewington-heating.co.uk/wp-content/uploads/2024/07/Solar-hot-water-systems.jpg",
-    href: "/products?category=solar-heater",
-  },
-  {
-    id: "air-conditioners",
-    name: "Air Conditioners",
-    description: "Efficient cooling solutions for your home",
-    image:
-      "https://www.lg.com/eastafrica/images/microsite/rac-product-buying-guide/LG-Air-conditioner-Buying-Guide-2-M.jpg",
-    href: "/products?category=ac",
-  },
-  {
-    id: "other-products",
-    name: "Other Products",
-    description: "Explore our range of other products",
-    image:
-      "https://www.kitchenaid.com/is/image/content/dam/business-unit/kitchenaid/en-us/digital-assets/pages/suites-refresh/Group%20880111831.jpeg?fit=constrain&fmt=jpeg&utc=2022-09-30T14:25:33Z&wid=1000",
-    href: "/products?category=other-products",
-  },
-];
+import { useState, useEffect } from "react";
 
+const base_url= process.env.NEXT_PUBLIC_BASE_URL 
+
+interface Category {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+}
 export default function Categories() {
+  const [categories, setCategories] = useState<Category[]>([]);
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`${base_url}api/v1/product/categories/`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+        const data = await response.json();
+        setCategories(data.results);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+}, []);
+
+
+
+
+
   return (
     <div className="py-20 container mx-auto">
       <div className="text-center mb-12">
@@ -91,7 +58,7 @@ export default function Categories() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <Link href={category.href} className="block">
+            <Link href={`/products?categoryId=${category.id}`} className="block">
               <div className="group relative overflow-hidden rounded-xl">
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
                   <Image

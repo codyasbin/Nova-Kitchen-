@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import RelatedProducts from '@/components/products/RelatedProducts';
-import ProductGallery from '@/components/products/ProductGallery';
-import { Bookmark, Check, Info, Phone, Share2 } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import {useState} from "react";
+import Image from "next/image";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import {Button} from "@/components/ui/button";
+import {Card} from "@/components/ui/card";
+import {Separator} from "@/components/ui/separator";
+import RelatedProducts from "@/components/products/RelatedProducts";
+import ProductGallery from "@/components/products/ProductGallery";
+import {Bookmark, Check, Info, Phone, Share2} from "lucide-react";
+import {cn} from "@/lib/utils";
 
-export default function ProductDetails({ product, variants }: { product: any; variants: any[] }) {
-  console.log('Product Details:', product);
-  console.log('Variants:', variants);
+export default function ProductDetails({product, variants}: {product: any; variants: any[]}) {
+  console.log("Product Details:", product);
+  console.log("Variants:", variants);
   const [selectedVariant, setSelectedVariant] = useState(0);
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <ProductGallery images={variants[selectedVariant]?.images || product.images } />
+        <ProductGallery images={variants[selectedVariant]?.images || product.images} />
 
         <div className="space-y-6">
           <div>
@@ -40,16 +40,8 @@ export default function ProductDetails({ product, variants }: { product: any; va
 
           <div className="flex items-end gap-4">
             <p className="text-2xl font-semibold">₹{variants[selectedVariant]?.price || product.price}</p>
-            {variants[selectedVariant]?.originalPrice && (
-              <p className="text-muted-foreground line-through">
-                ₹{variants[selectedVariant]?.originalPrice}
-              </p>
-            )}
-            {variants[selectedVariant]?.discount && (
-              <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">
-                {variants[selectedVariant]?.discount}% OFF
-              </span>
-            )}
+            {variants[selectedVariant]?.originalPrice && <p className="text-muted-foreground line-through">₹{variants[selectedVariant]?.originalPrice}</p>}
+            {variants[selectedVariant]?.discount && <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">{variants[selectedVariant]?.discount}% OFF</span>}
           </div>
 
           <Separator />
@@ -61,11 +53,8 @@ export default function ProductDetails({ product, variants }: { product: any; va
                 {variants.map((variant, index) => (
                   <Button
                     key={variant.id}
-                    variant={selectedVariant === index ? 'default' : 'outline'}
-                    className={cn(
-                      'border h-auto py-2 px-4',
-                      selectedVariant === index ? 'border-primary' : 'border-gray-200'
-                    )}
+                    variant={selectedVariant === index ? "default" : "outline"}
+                    className={cn("border h-auto py-2 px-4", selectedVariant === index ? "border-primary" : "border-gray-200")}
                     onClick={() => setSelectedVariant(index)}
                   >
                     {variant.model}
@@ -86,20 +75,21 @@ export default function ProductDetails({ product, variants }: { product: any; va
             </TabsContent>
             <TabsContent value="specifications" className="mt-4">
               <ul className="space-y-2">
-                {product.specifications.map((spec: string, index: number) => (
-                  <li key={index} className="flex items-start">
+                {product.specifications.map((spec: {id: number; content: string}, index: number) => (
+                  <li key={spec.id ?? index} className="flex items-start">
                     <Check className="mr-2 h-5 w-5 text-green-500 mt-0.5" />
-                    <span>{spec}</span>
+                    <span>{spec.content}</span>
                   </li>
                 ))}
               </ul>
             </TabsContent>
+
             <TabsContent value="features" className="mt-4">
               <ul className="space-y-2">
-                {product.features.map((feature: string, index: number) => (
-                  <li key={index} className="flex items-start">
+                {product.features.map((feature: {id: number; content: string}, index: number) => (
+                  <li key={feature.id ?? index} className="flex items-start">
                     <Check className="mr-2 h-5 w-5 text-green-500 mt-0.5" />
-                    <span>{feature}</span>
+                    <span>{feature.content}</span>
                   </li>
                 ))}
               </ul>
@@ -107,7 +97,9 @@ export default function ProductDetails({ product, variants }: { product: any; va
           </Tabs>
 
           <div className="flex gap-4 mt-8">
-            <Button size="lg" className="flex-1">Enquire Now</Button>
+            <Button size="lg" className="flex-1">
+              Enquire Now
+            </Button>
             <Button size="lg" variant="outline" className="flex-1">
               <Phone className="mr-2 h-4 w-4" />
               Contact
@@ -128,9 +120,7 @@ export default function ProductDetails({ product, variants }: { product: any; va
           <Card className="p-4 bg-muted/50 border border-muted mt-6">
             <div className="flex items-start gap-2">
               <Info className="h-5 w-5 text-muted-foreground mt-0.5" />
-              <p className="text-sm text-muted-foreground">
-                Visit our showroom to experience this product in person and get expert advice from our kitchen specialists.
-              </p>
+              <p className="text-sm text-muted-foreground">Visit our showroom to experience this product in person and get expert advice from our kitchen specialists.</p>
             </div>
           </Card>
         </div>

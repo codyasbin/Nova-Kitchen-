@@ -40,7 +40,7 @@ export default function ProductGallery({ images }: { images: { image: string }[]
               className="absolute inset-0"
             >
               <Image
-                src={images[currentIndex].image}
+                src={images && images[currentIndex] ? images[currentIndex].image : ''}
                 alt={`Product image ${currentIndex + 1}`}
                 fill
                 className="object-cover"
@@ -84,7 +84,7 @@ export default function ProductGallery({ images }: { images: { image: string }[]
             </DialogHeader>
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
               <Image
-                src={images[currentIndex].image}
+                src={images && images[currentIndex] ? images[currentIndex].image : ''}
                 alt={`Product image ${currentIndex + 1}`}
                 fill
                 className="object-contain"
@@ -95,7 +95,7 @@ export default function ProductGallery({ images }: { images: { image: string }[]
       </div>
       
       <div className="grid grid-cols-5 gap-2">
-        {images.map((image, index) => (
+        {images && images.length > 0 && images.map((image, index) => (
           <div
             key={index}
             className={`relative aspect-square rounded-md overflow-hidden cursor-pointer ${

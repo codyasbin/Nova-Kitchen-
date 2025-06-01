@@ -2,6 +2,7 @@ import Image from "next/image";
 import {Button} from "@/components/ui/button";
 import {Separator} from "@/components/ui/separator";
 import {Check} from "lucide-react";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
@@ -191,10 +192,14 @@ export default function AboutPage() {
           Whether you're renovating an existing space or designing a kitchen for your new home, we're here to help bring your vision to life.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button size="lg">Visit Our Showroom</Button>
-          <Button size="lg" variant="outline">
-            Book a Consultation
-          </Button>
+          <Link href={"/contact#locate"}>
+            <Button size="lg">Visit Our Showroom</Button>
+          </Link>
+          <Link href={"/contact"}>
+            <Button size="lg" variant="outline">
+              Book a Consultation
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

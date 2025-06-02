@@ -58,7 +58,7 @@ export default function Categories() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <Link href={`/products?categoryId=${category.id}`} className="block">
+            <Link href={`/products?category=${category.name}`} className="block">
               <div className="group relative overflow-hidden rounded-xl">
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
                   <Image

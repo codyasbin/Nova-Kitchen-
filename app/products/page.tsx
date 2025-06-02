@@ -6,12 +6,14 @@ import ProductList from "@/components/products/ProductList";
 import ProductFilters from "@/components/products/ProductFilters";
 
 import { Separator } from "@/components/ui/separator";
-import ProductService, { Category, Brand} from "@/app/api/productService"; // Update this import path
+import ProductService, { Category, Brand, Subcategory} from "@/app/api/productService"; // Update this import path
 
 
 export default function ProductsPage() {
   const searchParams = useSearchParams();
   const [categories, setCategories] = useState<Category[]>([]);
+  const [subcategory, setSubcategory] = useState<string>(""); // Fixed: Changed to string with empty default
+  const [activeSubcategory, setActiveSubcategory] = useState("all");
   const [brands, setBrands] = useState<Brand[]>([]);
   const [activeCategory, setActiveCategory] = useState("all");
   const [activeBrands, setActiveBrands] = useState<string[]>([]);
@@ -24,6 +26,7 @@ export default function ProductsPage() {
       const categories =async () => {
         const response = await ProductService.getCategories();
         const brandsResponse = await ProductService.getBrands();
+        
        
         setBrands(brandsResponse.results);
         setCategories(response.results);
@@ -44,28 +47,44 @@ export default function ProductsPage() {
 
     // Set category from URL if present
     const categoryFromUrl = searchParams.get("category");
-    const typefromUrl = searchParams.get("type")?.replace(/-/g, " ");
+    const typeFromUrl = searchParams.get("type"); // Fixed: typo in variable name
     if (categoryFromUrl) {
       setActiveCategory(categoryFromUrl);
     }
-    if (typefromUrl) {
-     setSearchTerm(typefromUrl);
+    if (typeFromUrl) {
+      setSubcategory(typeFromUrl);
+      console.log("subcategory from URL", typeFromUrl);
+      console.log("subcategory", typeFromUrl); // Fixed: log the actual value from URL
     }
   }, [searchParams]);
 
-  // Fetch products on mount
+  // Fetch products on mount and when dependencies change
   useEffect(() => {
     const fetchProducts = async () => {
       const allProducts = await ProductService.getProducts();
-       const productByCategory = await ProductService.getProductsByCategory(activeCategory);
-      if (activeCategory !== "all" && productByCategory.results.length > 0) {
+      const productByCategory = await ProductService.getProductsByCategory(activeCategory);
+      let productBySubcategory = { results: [] as any[] };
+      
+      // Fixed: Better condition checking for subcategory
+      if (subcategory && subcategory.trim() !== "" && subcategory !== "all") {
+        productBySubcategory = await ProductService.getProductsBySubcategory(subcategory);
+      }
+      
+      // Priority: subcategory > category > all products
+      if (subcategory && subcategory.trim() !== "" && subcategory !== "all" && productBySubcategory.results.length > 0) {
+        console.log("subcategory", subcategory);
+        console.log("productBySubcategory", productBySubcategory.results);
+        setProducts(productBySubcategory.results);
+      }
+      else if (activeCategory !== "all" && productByCategory.results.length > 0) {
         setProducts(productByCategory.results);
-      } else {  
+      }
+      else {  
         setProducts(allProducts.results);
       }
     };
     fetchProducts();
-  }, []);
+  }, [activeCategory, subcategory]); // Fixed: Added dependencies to re-fetch when they change
 
   // Filter products when filters change
   useEffect(() => {
@@ -83,7 +102,11 @@ export default function ProductsPage() {
       // Filter by search term
       if (
         searchTerm &&
-        !product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        !(
+          product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (product.subcategory &&
+        product.subcategory.toLowerCase().includes(searchTerm.toLowerCase()))
+        )
       ) {
         return false;
       }

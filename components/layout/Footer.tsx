@@ -66,27 +66,27 @@ export default function Footer() {
             <h4 className="font-medium text-lg mb-4">Products</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/products?category=modular-kitchen" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/products?category=Modular Kitchen" className="text-muted-foreground hover:text-foreground transition-colors">
                   Modular Kitchens
                 </Link>
               </li>
               <li>
-                <Link href="/products?category=appliances" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/products?category=Appliances" className="text-muted-foreground hover:text-foreground transition-colors">
                   Kitchen Appliances
                 </Link>
               </li>
               <li>
-                <Link href="/products?category=water-purifier" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/products?category=Water Purifiers" className="text-muted-foreground hover:text-foreground transition-colors">
                   Water Purifiers
                 </Link>
               </li>
               <li>
-                <Link href="/products?category=accessories" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/products?category=Kitchen Accessories" className="text-muted-foreground hover:text-foreground transition-colors">
                   Kitchen Accessories
                 </Link>
               </li>
               <li>
-                <Link href="/products?category=interior" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/products?category=Interior Solutions" className="text-muted-foreground hover:text-foreground transition-colors">
                   Interior Solutions
                 </Link>
               </li>

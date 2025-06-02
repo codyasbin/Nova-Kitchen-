@@ -41,19 +41,19 @@ const navLinks: NavItem[] = [
         items: [
           {
             name: "L-Shaped Kitchens",
-            href: "/products?category=modular-kitchen&type=l-shaped",
+            href: "/products?category=Modular Kitchen&type=L-Shaped Kitchens",
           },
           {
             name: "U-Shaped Kitchens",
-            href: "/products?category=modular-kitchen&type=u-shaped",
+            href: "/products?category=Modular Kitchen&type=U-Shaped Kitchens",
           },
           {
             name: "Parallel Kitchens",
-            href: "/products?category=modular-kitchen&type=parallel",
+            href: "/products?category=Modular Kitchen&type=Parallel Kitchens",
           },
           {
             name: "Island Kitchens",
-            href: "/products?category=modular-kitchen&type=island",
+            href: "/products?category=Modular Kitchen&type=Island Kitchens",
           },
         ],
       },
@@ -62,21 +62,21 @@ const navLinks: NavItem[] = [
         items: [
           {
             name: "Chimneys",
-            href: "/products?category=appliances&type=chimney",
+            href: "/products?category=Appliances&type=Chimneys",
           },
           {
             name: "Gas Stoves",
-            href: "/products?category=appliances&type=gas-stove",
+            href: "/products?category=Appliances&type=Gas Stoves",
           },
-          {name: "Sinks", href: "/products?category=appliances&type=sink"},
-          {name: "Ovens", href: "/products?category=appliances&type=oven"},
+          {name: "Sinks", href: "/products?category=Appliances&type=Sinks"},
+          {name: "Ovens", href: "/products?category=Appliances&type=Ovens"},
           {
             name: "Dishwashers",
-            href: "/products?category=appliances&type=dishwasher",
+            href: "/products?category=Appliances&type=Dishwashers", 
           },
           {
             name: "Refrigerators",
-            href: "/products?category=appliances&type=refrigerator",
+            href: "/products?category=Appliances&type=Refrigerators",
           },
         ],
       },
@@ -85,14 +85,14 @@ const navLinks: NavItem[] = [
         items: [
           {
             name: "Water Purifiers",
-            href: "/products?category=water-purifier",
+            href: "/products?category=Water Purifiers",
           },
           {
             name: "Kitchen Accessories",
-            href: "/products?category=accessories",
+            href: "/products?category=Kitchen Accessories",
           },
-          {name: "Interior Solutions", href: "/products?category=interior"},
-          {name: "Air Conditioners", href: "/products?category=ac"},
+          {name: "Interior Solutions", href: "/products?category=Interior Solutions"},
+          {name: "Air Conditioners", href: "/products?category=Air Conditioners"},
         ],
       },
     ],

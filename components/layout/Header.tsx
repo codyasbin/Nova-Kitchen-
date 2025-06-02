@@ -1,41 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import {useState} from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/layout/ThemeToggle";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
-import {
-  Menu,
-  Search,
-  Phone,
-  X,
-  ChevronRight,
-  ChevronDown,
-} from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { FaWhatsapp, FaViber } from "react-icons/fa";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import {usePathname, useRouter} from "next/navigation";
+import {Button} from "@/components/ui/button";
+import {ThemeToggle} from "@/components/layout/ThemeToggle";
+
+import {Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle} from "@/components/ui/sheet";
+import {Menu, Search, Phone, X, ChevronRight, ChevronDown} from "lucide-react";
+import {Input} from "@/components/ui/input";
+import {cn} from "@/lib/utils";
+import {FaWhatsapp, FaViber} from "react-icons/fa";
+import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle} from "@/components/ui/navigation-menu";
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@/components/ui/collapsible";
 
 interface NavItem {
   name: string;
@@ -54,7 +31,7 @@ interface NavLink {
 }
 
 const navLinks: NavItem[] = [
-  { name: "Home", href: "/" },
+  {name: "Home", href: "/"},
   {
     name: "Products",
     href: "/products",
@@ -91,8 +68,8 @@ const navLinks: NavItem[] = [
             name: "Gas Stoves",
             href: "/products?category=appliances&type=gas-stove",
           },
-          { name: "Sinks", href: "/products?category=appliances&type=sink" },
-          { name: "Ovens", href: "/products?category=appliances&type=oven" },
+          {name: "Sinks", href: "/products?category=appliances&type=sink"},
+          {name: "Ovens", href: "/products?category=appliances&type=oven"},
           {
             name: "Dishwashers",
             href: "/products?category=appliances&type=dishwasher",
@@ -114,24 +91,22 @@ const navLinks: NavItem[] = [
             name: "Kitchen Accessories",
             href: "/products?category=accessories",
           },
-          { name: "Interior Solutions", href: "/products?category=interior" },
-          { name: "Air Conditioners", href: "/products?category=ac" },
+          {name: "Interior Solutions", href: "/products?category=interior"},
+          {name: "Air Conditioners", href: "/products?category=ac"},
         ],
       },
     ],
   },
-  { name: "Gallery", href: "/gallery" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  {name: "Gallery", href: "/gallery"},
+  {name: "About", href: "/about"},
+  {name: "Contact", href: "/contact"},
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [expandedCategories, setExpandedCategories] = useState<
-    Record<string, boolean>
-  >({});
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const router = useRouter();
 
   const toggleCategoryExpanded = (categoryName: string) => {
@@ -164,16 +139,11 @@ export default function Header() {
                         <div className="grid grid-cols-3 gap-3 p-4 w-[600px]">
                           {link.subMenu.map((group) => (
                             <div key={group.title} className="space-y-2">
-                              <h4 className="text-sm font-medium mb-2">
-                                {group.title}
-                              </h4>
+                              <h4 className="text-sm font-medium mb-2">{group.title}</h4>
                               <ul className="space-y-1">
                                 {group.items.map((item) => (
                                   <li key={item.name}>
-                                    <Link
-                                      href={item.href}
-                                      className="block p-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
-                                    >
+                                    <Link href={item.href} className="block p-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground">
                                       {item.name}
                                     </Link>
                                   </li>
@@ -186,13 +156,7 @@ export default function Header() {
                     </NavigationMenuItem>
                   ) : (
                     <NavigationMenuItem key={link.name}>
-                      <Link
-                        href={link.href}
-                        className={cn(
-                          navigationMenuTriggerStyle(),
-                          pathname === link.href ? "font-medium" : ""
-                        )}
-                      >
+                      <Link href={link.href} className={cn(navigationMenuTriggerStyle(), pathname === link.href ? "font-medium" : "")}>
                         {link.name}
                       </Link>
                     </NavigationMenuItem>
@@ -204,16 +168,8 @@ export default function Header() {
 
           {/* Right Icons */}
           <div className="flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-            >
-              {isSearchOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Search className="h-5 w-5" />
-              )}
+            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(!isSearchOpen)}>
+              {isSearchOpen ? <X className="h-5 w-5" /> : <Search className="h-5 w-5" />}
             </Button>
 
             {/* Desktop Contact Buttons */}
@@ -222,25 +178,19 @@ export default function Header() {
                 <Phone className="mr-2 h-4 w-4" />
                 <span className="hidden lg:inline">056-522482</span>
               </Button>
-              <a
-                href="https://wa.me/910000000000"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="text-green-600">
                   <FaWhatsapp className="mr-2 h-4 w-4" /> WhatsApp
                 </Button>
               </a>
-              <a
-                href="viber://chat?number=910000000000"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="outline" size="sm" className="text-purple-600">
+              {/* <a href="viber://chat?number=9779805868705" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" className="text-purple-600 hover:text-white hover:bg-purple-600">
                   <FaViber className="mr-2 h-4 w-4" /> Viber
                 </Button>
-              </a>
-              <Button size="sm">Book Consultation</Button>
+              </a> */}
+              <Link href={"/contact"}>
+                <Button size="sm">Book Consultation</Button>
+              </Link>
             </div>
 
             <ThemeToggle />
@@ -267,42 +217,21 @@ export default function Header() {
                     {navLinks.map((link) => (
                       <div key={link.name} className="mb-1">
                         {link.subMenu ? (
-                          <Collapsible
-                            className="w-full"
-                            open={expandedCategories[link.name]}
-                            onOpenChange={() =>
-                              toggleCategoryExpanded(link.name)
-                            }
-                          >
+                          <Collapsible className="w-full" open={expandedCategories[link.name]} onOpenChange={() => toggleCategoryExpanded(link.name)}>
                             <CollapsibleTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                className="w-full px-3 font-normal justify-between text-md rounded-lg h-auto py-3"
-                              >
+                              <Button variant="ghost" className="w-full px-3 font-normal justify-between text-md rounded-lg h-auto py-3">
                                 {link.name}
-                                {expandedCategories[link.name] ? (
-                                  <ChevronDown className="h-4 w-4" />
-                                ) : (
-                                  <ChevronRight className="h-4 w-4" />
-                                )}
+                                {expandedCategories[link.name] ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                               </Button>
                             </CollapsibleTrigger>
                             <CollapsibleContent className="px-1">
                               {link.subMenu.map((group) => (
                                 <div key={group.title} className="mb-3">
-                                  <div className="text-sm font-medium text-primary px-3 py-2">
-                                    {group.title}
-                                  </div>
+                                  <div className="text-sm font-medium text-primary px-3 py-2">{group.title}</div>
                                   <ul className="space-y-1 pl-2">
                                     {group.items.map((item) => (
                                       <li key={item.name}>
-                                        <Link
-                                          href={item.href}
-                                          className="flex items-center text-sm px-3 py-2 rounded-md hover:bg-accent transition-colors"
-                                          onClick={() =>
-                                            setIsMobileMenuOpen(false)
-                                          }
-                                        >
+                                        <Link href={item.href} className="flex items-center text-sm px-3 py-2 rounded-md hover:bg-accent transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                                           {item.name}
                                         </Link>
                                       </li>
@@ -317,9 +246,7 @@ export default function Header() {
                             href={link.href}
                             className={cn(
                               "flex items-center w-full px-3 py-3 rounded-lg transition-colors",
-                              pathname === link.href
-                                ? "bg-primary text-primary-foreground font-medium"
-                                : "hover:bg-accent"
+                              pathname === link.href ? "bg-primary text-primary-foreground font-medium" : "hover:bg-accent"
                             )}
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
@@ -333,51 +260,25 @@ export default function Header() {
 
                 {/* Mobile Contact Buttons */}
                 <div className="border-t p-4 space-y-3">
-                  <Button className="w-full bg-primary hover:bg-primary/90">
-                    Book Consultation
-                  </Button>
+                  <Button className="w-full bg-primary hover:bg-primary/90">Book Consultation</Button>
 
                   <div className="grid grid-cols-3 gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full flex items-center justify-center"
-                    >
+                    <Button variant="outline" size="sm" className="w-full flex items-center justify-center">
                       <Phone className="h-4 w-4" />
                     </Button>
-                    <a
-                      href="https://wa.me/910000000000"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full"
-                    >
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700"
-                      >
+                    <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" className="w-full">
+                      <Button variant="outline" size="sm" className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700">
                         <FaWhatsapp className="h-4 w-4" />
                       </Button>
                     </a>
-                    <a
-                      href="viber://chat?number=910000000000"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full"
-                    >
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full bg-purple-50 text-purple-600 border-purple-200 hover:bg-purple-100 hover:text-purple-700"
-                      >
+                    <a href="viber://chat?number=910000000000" target="_blank" rel="noopener noreferrer" className="w-full">
+                      <Button variant="outline" size="sm" className="w-full bg-purple-50 text-purple-600 border-purple-200 hover:bg-purple-100 hover:text-purple-700">
                         <FaViber className="h-4 w-4" />
                       </Button>
                     </a>
                   </div>
 
-                  <div className="text-xs text-center text-muted-foreground">
-                    Call or message us: 056-522482
-                  </div>
+                  <div className="text-xs text-center text-muted-foreground">Call or message us: 056-522482</div>
                 </div>
               </SheetContent>
             </Sheet>
@@ -385,31 +286,20 @@ export default function Header() {
         </div>
 
         {/* Search Bar */}
-        <div
-          className={cn(
-            "overflow-hidden transition-all duration-300",
-            isSearchOpen ? "max-h-20 opacity-100 py-4" : "max-h-0 opacity-0"
-          )}
-        >
+        <div className={cn("overflow-hidden transition-all duration-300", isSearchOpen ? "max-h-20 opacity-100 py-4" : "max-h-0 opacity-0")}>
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              const searchInput = e.currentTarget.querySelector(
-                "input"
-              ) as HTMLInputElement;
+              const searchInput = e.currentTarget.querySelector("input") as HTMLInputElement;
               const searchTerm = searchInput.value.trim();
               if (searchTerm) {
                 // Check if we're already on the products page
                 if (pathname === "/products") {
                   // Force a full navigation to refresh the page with new search params
-                  window.location.href = `/products?search=${encodeURIComponent(
-                    searchTerm
-                  )}`;
+                  window.location.href = `/products?search=${encodeURIComponent(searchTerm)}`;
                 } else {
                   // Use router for normal navigation
-                  router.push(
-                    `/products?search=${encodeURIComponent(searchTerm)}`
-                  );
+                  router.push(`/products?search=${encodeURIComponent(searchTerm)}`);
                 }
                 setIsSearchOpen(false);
                 searchInput.value = "";
@@ -417,13 +307,7 @@ export default function Header() {
             }}
             className="flex items-center"
           >
-            <Input
-              type="search"
-              name="search"
-              placeholder="Search for products..."
-              className="flex-1"
-              autoFocus={isSearchOpen}
-            />
+            <Input type="search" name="search" placeholder="Search for products..." className="flex-1" autoFocus={isSearchOpen} />
             <Button type="submit" className="ml-2">
               Search
             </Button>

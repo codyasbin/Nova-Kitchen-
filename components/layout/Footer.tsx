@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
-import { Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import {Separator} from "@/components/ui/separator";
+import {Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Mail} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -14,9 +14,7 @@ export default function Footer() {
               <span>Nova</span>
               <span className="text-primary"> Kitchen</span>
             </h3>
-            <p className="text-muted-foreground">
-              Premium kitchen solutions for modern homes. Transforming spaces with innovative designs and quality craftsmanship since 2010.
-            </p>
+            <p className="text-muted-foreground">Premium kitchen solutions for modern homes. Transforming spaces with innovative designs and quality craftsmanship since 2010.</p>
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 p-0">
                 <Facebook className="h-5 w-5" />
@@ -32,7 +30,7 @@ export default function Footer() {
               </Button>
             </div>
           </div>
-          
+
           <div>
             <h4 className="font-medium text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
@@ -63,7 +61,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-medium text-lg mb-4">Products</h4>
             <ul className="space-y-2">
@@ -92,18 +90,15 @@ export default function Footer() {
                   Interior Solutions
                 </Link>
               </li>
-
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-medium text-lg mb-4">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex">
                 <MapPin className="h-5 w-5 mr-3 text-primary shrink-0" />
-                <span className="text-muted-foreground">
-                  MCXF+C9W Swastik Furniture, Near, Bharatpur 44200
-                </span>
+                <span className="text-muted-foreground">MCXF+C9W Swastik Furniture, Near, Bharatpur 44200</span>
               </li>
               <li className="flex">
                 <Phone className="h-5 w-5 mr-3 text-primary shrink-0" />
@@ -116,27 +111,11 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <Separator className="my-8" />
-        
-        <div className="mb-8">
-          <h4 className="font-medium text-lg mb-4 text-center">Subscribe to Our Newsletter</h4>
-          <div className="flex max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Your email address"
-              className="rounded-r-none"
-            />
-            <Button className="rounded-l-none">Subscribe</Button>
-          </div>
-        </div>
-        
-        <Separator className="my-8" />
-        
+
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-            © {new Date().getFullYear()} Nova Kitchen & Interiors. All rights reserved.
-          </p>
+          <p className="text-sm text-muted-foreground mb-4 md:mb-0">© {new Date().getFullYear()} Nova Kitchen & Interiors. All rights reserved.</p>
           <div className="flex space-x-6">
             <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy

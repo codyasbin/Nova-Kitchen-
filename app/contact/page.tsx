@@ -1,38 +1,29 @@
 "use client";
-import { useEffect } from "react";
-import { useState } from "react";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Card } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import {useEffect} from "react";
+import {useState} from "react";
+import {z} from "zod";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {Input} from "@/components/ui/input";
+import {Button} from "@/components/ui/button";
+import {Textarea} from "@/components/ui/textarea";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
+import {Card} from "@/components/ui/card";
+import {useToast} from "@/hooks/use-toast";
+import {MapPin, Phone, Mail, Clock} from "lucide-react";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  phone: z.string().min(10, { message: "Please enter a valid phone number." }),
-  message: z
-    .string()
-    .min(10, { message: "Message must be at least 10 characters." }),
+  name: z.string().min(2, {message: "Name must be at least 2 characters."}),
+  email: z.string().email({message: "Please enter a valid email address."}),
+  phone: z.string().min(10, {message: "Please enter a valid phone number."}),
+  message: z.string().min(10, {message: "Message must be at least 10 characters."}),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  const {toast} = useToast();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -71,7 +62,7 @@ export default function ContactPage() {
         title: "Message sent successfully!",
         description: "We'll get back to you as soon as possible.",
       });
-      
+
       form.reset();
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -89,10 +80,7 @@ export default function ContactPage() {
     <div className="container mx-auto py-12">
       <div className="max-w-3xl mx-auto mb-12 text-center">
         <h1 className="text-4xl font-playfair font-bold mb-4">Contact Us</h1>
-        <p className="text-muted-foreground text-lg">
-          We'd love to hear from you. Get in touch with our team for any queries
-          or to schedule a visit to our showroom.
-        </p>
+        <p className="text-muted-foreground text-lg">We'd love to hear from you. Get in touch with our team for any queries or to schedule a visit to our showroom.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -158,7 +146,7 @@ export default function ContactPage() {
                 <FormField
                   control={form.control}
                   name="name"
-                  render={({ field }) => (
+                  render={({field}) => (
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
@@ -172,7 +160,7 @@ export default function ContactPage() {
                 <FormField
                   control={form.control}
                   name="email"
-                  render={({ field }) => (
+                  render={({field}) => (
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
@@ -187,7 +175,7 @@ export default function ContactPage() {
               <FormField
                 control={form.control}
                 name="phone"
-                render={({ field }) => (
+                render={({field}) => (
                   <FormItem>
                     <FormLabel>Phone</FormLabel>
                     <FormControl>
@@ -201,15 +189,11 @@ export default function ContactPage() {
               <FormField
                 control={form.control}
                 name="message"
-                render={({ field }) => (
+                render={({field}) => (
                   <FormItem>
                     <FormLabel>Message</FormLabel>
                     <FormControl>
-                      <Textarea
-                        placeholder="Tell us about your kitchen requirements"
-                        className="min-h-[120px]"
-                        {...field}
-                      />
+                      <Textarea placeholder="Tell us about your kitchen requirements" className="min-h-[120px]" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -224,21 +208,16 @@ export default function ContactPage() {
         </Card>
       </div>
 
-      <div className="mt-16">
+      <div id="locate" className="mt-16">
         <h3 className="text-2xl font-bold mb-4 flex items-center justify-center gap-2">
           <span>
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-              <path
-                fill="#2563eb"
-                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"
-              ></path>
+              <path fill="#2563eb" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"></path>
             </svg>
           </span>
           Find Us Here
         </h3>
-        <p className="text-muted-foreground text-lg text-center mb-8">
-          Visit our showroom or get directions to our location.
-        </p>
+        <p className="text-muted-foreground text-lg text-center mb-8">Visit our showroom or get directions to our location.</p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col items-center bg-white rounded-xl shadow-lg border transition hover:shadow-2xl">
             <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
@@ -246,7 +225,7 @@ export default function ContactPage() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.6048962870914!2d84.42087921104606!3d27.698603976088307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fbf9b475ee57%3A0xa7ca91d2a73ccfeb!2sNova%20Kitchen%20%26%20Interiors!5e0!3m2!1sen!2snp!4v1747559068586!5m2!1sen!2snp"
                 width="100%"
                 height="100%"
-                style={{ border: 0, minHeight: 320 }}
+                style={{border: 0, minHeight: 320}}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -256,17 +235,12 @@ export default function ContactPage() {
             <div className="flex items-center gap-2 py-4 px-6 w-full justify-center">
               <span className="text-primary text-xl">
                 <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-                  <path
-                    fill="#2563eb"
-                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"
-              ></path>
+                  <path fill="#2563eb" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"></path>
                 </svg>
               </span>
               <span className="font-semibold">Nova Kitchen & Interiors</span>
             </div>
-            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">
-              MCXF+C9W Swastik Furniture, Near, Bharatpur 44200
-            </div>
+            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">MCXF+C9W Swastik Furniture, Near, Bharatpur 44200</div>
           </div>
           <div className="flex flex-col items-center bg-white rounded-xl shadow-lg border transition hover:shadow-2xl">
             <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
@@ -274,7 +248,7 @@ export default function ContactPage() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15311.500224816396!2d84.43150212194038!3d27.670381334454856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994e52a2b5749dd%3A0xca45722361cf550a!2sMilan%20Chowk!5e0!3m2!1sen!2snp!4v1747718224791!5m2!1sen!2snp"
                 width="100%"
                 height="100%"
-                style={{ border: 0, minHeight: 320 }}
+                style={{border: 0, minHeight: 320}}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -284,17 +258,12 @@ export default function ContactPage() {
             <div className="flex items-center gap-2 py-4 px-6 w-full justify-center">
               <span className="text-primary text-xl">
                 <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-                  <path
-                    fill="#2563eb"
-                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"
-                  ></path>
+                  <path fill="#2563eb" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"></path>
                 </svg>
               </span>
               <span className="font-semibold">Milan Chowk, Bharatpur</span>
             </div>
-            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">
-              Milan Rd, Bharatpur 44200
-            </div>
+            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">Milan Rd, Bharatpur 44200</div>
           </div>
         </div>
       </div>

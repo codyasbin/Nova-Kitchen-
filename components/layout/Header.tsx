@@ -72,7 +72,7 @@ const navLinks: NavItem[] = [
           {name: "Ovens", href: "/products?category=Appliances&type=Ovens"},
           {
             name: "Dishwashers",
-            href: "/products?category=Appliances&type=Dishwashers", 
+            href: "/products?category=Appliances&type=Dishwashers",
           },
           {
             name: "Refrigerators",
@@ -176,9 +176,9 @@ export default function Header() {
             <div className="hidden md:flex space-x-2">
               <Button variant="outline" size="sm">
                 <Phone className="mr-2 h-4 w-4" />
-                <span className="hidden lg:inline">056-522482</span>
+                <span className="hidden lg:inline">056-596428</span>
               </Button>
-              <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/9779802146865" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="text-green-600">
                   <FaWhatsapp className="mr-2 h-4 w-4" /> WhatsApp
                 </Button>
@@ -263,22 +263,25 @@ export default function Header() {
                   <Button className="w-full bg-primary hover:bg-primary/90">Book Consultation</Button>
 
                   <div className="grid grid-cols-3 gap-2">
-                    <Button variant="outline" size="sm" className="w-full flex items-center justify-center">
-                      <Phone className="h-4 w-4" />
-                    </Button>
-                    <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" className="w-full">
+                    <a href="tel:056596428">
+                      <Button variant="outline" size="sm">
+                        <Phone className="mr-2 h-4 w-4" />
+                        <span className="hidden lg:inline">056-596428</span>
+                      </Button>
+                    </a>
+                    <a href="https://wa.me/9779802146865" target="_blank" rel="noopener noreferrer" className="w-full">
                       <Button variant="outline" size="sm" className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700">
                         <FaWhatsapp className="h-4 w-4" />
                       </Button>
                     </a>
-                    <a href="viber://chat?number=910000000000" target="_blank" rel="noopener noreferrer" className="w-full">
+                    {/* <a href="viber://chat?number=910000000000" target="_blank" rel="noopener noreferrer" className="w-full">
                       <Button variant="outline" size="sm" className="w-full bg-purple-50 text-purple-600 border-purple-200 hover:bg-purple-100 hover:text-purple-700">
                         <FaViber className="h-4 w-4" />
                       </Button>
-                    </a>
+                    </a> */}
                   </div>
 
-                  <div className="text-xs text-center text-muted-foreground">Call or message us: 056-522482</div>
+                  <div className="text-xs text-center text-muted-foreground">Call or message us: 056-596428</div>
                 </div>
               </SheetContent>
             </Sheet>

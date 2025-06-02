@@ -104,9 +104,11 @@ export default function ContactPage() {
               <div>
                 <h4 className="font-medium">Call Us</h4>
                 <p className="text-muted-foreground text-sm mt-1">
-                  +91 9876543210
+                  +977 9845046865
                   <br />
-                  +91 2234567890
+                  +977 9801246865
+                  <br />
+                  056-596482
                 </p>
               </div>
             </div>

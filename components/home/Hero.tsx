@@ -1,20 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import {motion, AnimatePresence} from "framer-motion";
+import {Button} from "@/components/ui/button";
+import {ChevronRight} from "lucide-react";
 import Link from "next/link";
 
 const slides = [
   {
     id: 1,
-    image:
-      "https://planner5d.com/blog/content/images/2022/11/white-kitchen-with-stainless-steel.jpg",
+    image: "https://planner5d.com/blog/content/images/2022/11/white-kitchen-with-stainless-steel.jpg",
     title: "Modern Kitchen Solutions",
-    subtitle:
-      "Transform your kitchen into a space of elegance and functionality",
+    subtitle: "Transform your kitchen into a space of elegance and functionality",
   },
   {
     id: 2,
@@ -55,19 +53,13 @@ export default function Hero() {
             key={slides[currentSlide].id}
             className="absolute inset-0 w-full h-full"
             custom={direction}
-            initial={{ x: direction > 0 ? "100%" : "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: direction > 0 ? "-100%" : "100%" }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            initial={{x: direction > 0 ? "100%" : "-100%"}}
+            animate={{x: 0}}
+            exit={{x: direction > 0 ? "-100%" : "100%"}}
+            transition={{duration: 0.8, ease: "easeInOut"}}
           >
             <div className="absolute inset-0 w-full h-full">
-              <Image
-                src={slides[currentSlide].image || "/placeholder.svg"}
-                alt={slides[currentSlide].title}
-                fill
-                className="object-cover"
-                priority
-              />
+              <Image src={slides[currentSlide].image || "/placeholder.svg"} alt={slides[currentSlide].title} fill className="object-cover" priority />
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
             </div>
           </motion.div>
@@ -77,22 +69,10 @@ export default function Hero() {
       <div className="container mx-auto h-full flex items-center relative z-10">
         <div className="max-w-2xl text-white">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <span className="inline-block px-4 py-1 border border-primary/60 text-primary-foreground bg-primary/20 backdrop-blur-sm rounded-full text-sm mb-4">
-                Premium Kitchen Solutions
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold mb-4">
-                {slides[currentSlide].title}
-              </h1>
-              <p className="text-lg md:text-xl opacity-90 mb-8">
-                {slides[currentSlide].subtitle}
-              </p>
+            <motion.div key={currentSlide} initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: -20}} transition={{duration: 0.5, delay: 0.2}}>
+              <span className="inline-block px-4 py-1 border border-primary/60 text-primary-foreground bg-primary/20 backdrop-blur-sm rounded-full text-sm mb-4">Premium Kitchen Solutions</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold mb-4">{slides[currentSlide].title}</h1>
+              <p className="text-lg md:text-xl opacity-90 mb-8">{slides[currentSlide].subtitle}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/products">
                   <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -100,13 +80,11 @@ export default function Hero() {
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-black hover:bg-white dark:bg-white hover:text-black"
-                >
-                  Book Consultation
-                </Button>
+                <Link href="/contact">
+                  <Button size="lg" variant="outline" className="border-white text-black hover:bg-white dark:bg-white hover:text-black">
+                    Book Consultation
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -115,13 +93,7 @@ export default function Hero() {
 
       <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-2 z-10">
         {slides.map((_, index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-primary scale-125" : "bg-white/50"
-            }`}
-            onClick={() => paginate(index)}
-          />
+          <button key={index} className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-primary scale-125" : "bg-white/50"}`} onClick={() => paginate(index)} />
         ))}
       </div>
     </div>

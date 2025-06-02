@@ -183,11 +183,11 @@ export default function Header() {
                   <FaWhatsapp className="mr-2 h-4 w-4" /> WhatsApp
                 </Button>
               </a>
-              <a href="viber://chat?number=910000000000" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" className="text-purple-600">
+              {/* <a href="viber://chat?number=9779805868705" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" className="text-purple-600 hover:text-white hover:bg-purple-600">
                   <FaViber className="mr-2 h-4 w-4" /> Viber
                 </Button>
-              </a>
+              </a> */}
               <Link href={"/contact"}>
                 <Button size="sm">Book Consultation</Button>
               </Link>

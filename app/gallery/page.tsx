@@ -8,6 +8,7 @@ import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} fro
 
 import {Play} from "lucide-react";
 import Testimonials from "@/components/home/Testimonials";
+import StoreGallery from "@/components/Gallery/storegallery";
 
 // Type Definitions
 type APIImage = {
@@ -72,43 +73,45 @@ export default function GalleryPage() {
   const filteredProjects = currentCategory === "all" ? projects : projects.filter((project) => project.category === currentCategory);
 
   return (
-    <div className="container mx-auto py-12">
-      <div className="max-w-3xl mx-auto mb-12 text-center">
-        <h1 className="text-4xl font-playfair font-bold mb-4">Our Project Gallery</h1>
-        <p className="text-muted-foreground text-lg">Browse our portfolio of beautifully designed kitchens and interior spaces that we've created for our clients.</p>
+    <>
+      <div className="container mx-auto py-12">
+        <div className="max-w-3xl mx-auto mb-12 text-center">
+          <h1 className="text-4xl font-playfair font-bold mb-4">Our Project Gallery</h1>
+          <p className="text-muted-foreground text-lg">Browse our portfolio of beautifully designed kitchens and interior spaces that we've created for our clients.</p>
+        </div>
+
+        <Tabs defaultValue="all" className="w-full mb-12" onValueChange={setCurrentCategory}>
+          <div className="flex justify-center">
+            <TabsList className="inline-flex scrollbar-hide h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground mb-8 overflow-x-auto scrollbar-thin scrollbar-thumb-muted-foreground/30 scrollbar-track-transparent">
+              <TabsTrigger value="all">All Projects</TabsTrigger>
+              <TabsTrigger value="modular">Modular Kitchens</TabsTrigger>
+              <TabsTrigger value="interiors">Interiors</TabsTrigger>
+              <TabsTrigger value="commercial">Commercial</TabsTrigger>
+            </TabsList>
+          </div>
+
+          <div className="mt-8">
+            {["all", "modular", "interiors", "commercial"].map((category) => (
+              <TabsContent key={category} value={category} className="mt-0">
+                <GalleryGrid projects={filteredProjects} setSelectedImage={setSelectedImage} />
+              </TabsContent>
+            ))}
+          </div>
+        </Tabs>
+
+        <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+          <DialogContent className="max-w-4xl">
+            <DialogHeader>
+              <DialogTitle>Project View</DialogTitle>
+              <DialogDescription>{projects.find((p) => p.images.some((img) => img.image === selectedImage))?.name || ""}</DialogDescription>
+            </DialogHeader>
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">{selectedImage && <Image src={selectedImage} alt="Project image" fill className="object-cover" />}</div>
+          </DialogContent>
+        </Dialog>
       </div>
-
-      <Tabs defaultValue="all" className="w-full mb-12" onValueChange={setCurrentCategory}>
-        <div className="flex justify-center">
-          <TabsList className="inline-flex scrollbar-hide h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground mb-8 overflow-x-auto scrollbar-thin scrollbar-thumb-muted-foreground/30 scrollbar-track-transparent">
-            <TabsTrigger value="all">All Projects</TabsTrigger>
-            <TabsTrigger value="modular">Modular Kitchens</TabsTrigger>
-            <TabsTrigger value="interiors">Interiors</TabsTrigger>
-            <TabsTrigger value="commercial">Commercial</TabsTrigger>
-          </TabsList>
-        </div>
-
-        <div className="mt-8">
-          {["all", "modular", "interiors", "commercial"].map((category) => (
-            <TabsContent key={category} value={category} className="mt-0">
-              <GalleryGrid projects={filteredProjects} setSelectedImage={setSelectedImage} />
-            </TabsContent>
-          ))}
-        </div>
-      </Tabs>
-
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl">
-          <DialogHeader>
-            <DialogTitle>Project View</DialogTitle>
-            <DialogDescription>{projects.find((p) => p.images.some((img) => img.image === selectedImage))?.name || ""}</DialogDescription>
-          </DialogHeader>
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">{selectedImage && <Image src={selectedImage} alt="Project image" fill className="object-cover" />}</div>
-        </DialogContent>
-      </Dialog>
-
+      <StoreGallery />
       <Testimonials />
-    </div>
+    </>
   );
 }
 

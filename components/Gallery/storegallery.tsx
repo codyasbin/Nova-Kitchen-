@@ -66,7 +66,7 @@ export default function StoreGallery() {
     <>
       <div id="showroom" className="container mx-auto py-12">
         <div className="max-w-3xl mx-auto mb-12 text-center">
-          <h2 className="text-4xl font-playfair font-bold mb-4">Our Stores</h2>
+          <h2 className="text-4xl font-playfair font-bold mb-4">Our Stores Gallery</h2>
           <p className="text-muted-foreground text-lg">Explore our stores located at Main Road and Putali Bazar, Bharatpur</p>
         </div>
 

@@ -6,73 +6,57 @@ import {motion} from "framer-motion";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {Play} from "lucide-react";
 
-// Helpers
-function getYouTubeVideoId(url: string): string | null {
-  const patterns = [/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)([^#&?]{11})/, /youtube\.com\/watch\?.*v=([^#&?]{11})/];
-  for (const pattern of patterns) {
-    const match = url.match(pattern);
-    if (match && match[1]) return match[1];
-  }
-  return null;
-}
-
-function getYouTubeThumbnail(videoId: string): string {
-  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-}
-
 // Types
 type Store = {
   id: number;
   name: string;
   location: string;
-  images: {image: string; video_url: string | null}[];
+  images: {
+    image: string;
+    iframe?: string;
+  }[];
 };
 
 export default function StoreGallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
-  // Static demo data
+  // Demo data with Google Street View iframes
   const stores: Store[] = [
     {
       id: 1,
       name: "Nova Kitchen and Interior",
-      location: "Main Road, Narayanghat",
+      location: "Main Road, Narayangarh(way to Pokhara Buspark)",
       images: [
         {
           image: "/store1_img1.jpg",
-          video_url: "https://youtu.be/M5E4ckXJGP4?si=f1mnuJCqLLGMW7e8",
+          iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1748860601726!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmFkZ0FF!2m2!1d27.69802338486377!2d84.4226342460351!3f202.8636869293947!4f-24.87974008615359!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
         },
         {
           image:
-            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noEbEH4KiWG8txKl2t3GxYpR0FYlfG0IoftIOyCICy8Cn9EjUmKdQ5fG8LMBUcTEzzQCBdky1bzNKT7ISrZxAzPzLfg70W_EaDgbiRvjoDj4xsKWEIsYKhTdxzJj_oBvhNPTC72mA=s1360-w1360-h1020-rw",
-          video_url: null,
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrqEgMcAFi1M--BTgAAzYFBhNHOigDegnapZ9gyEXC9GCOMLfNh_wU_yJhOLIi-pYV9IQqZq95-kANl-YFHKb-D1rPabbFZnQNPkTjne4knUthwp5h6tc5NElrxfILsOp-KDEqw=s1360-w1360-h1020-rw",
         },
         {
           image:
-            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nryh0UYTAdaAVKlIp-bbJAjXNLfo4XC-pOiT-PXqMVRrCgJQA2I7AAYrRdAtGC2UpSdfSPA8hfNEqPaRwxLYt2kSFzAsncnwOz8hkJ0eNO9n2XSfMs-35F-fQGtYtXkw1VIodEpug=s1360-w1360-h1020-rw",
-          video_url: null,
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nok4qcXleG9up0Kd5AI_Nl732oYHkn_0KT_J5_-OT0i7WTA2aTfm6fGmCr-6R28WZVyl2F1SRNCSlmv9ZSRreUJEfoWgCva8UkETKg_jjReMaIbMimYwWJ6yBBZfPN2IKyPQmZO=s1360-w1360-h1020-rw",
         },
       ],
     },
     {
       id: 2,
-      name: "Milan Chowk Bharatpur",
-      location: "Milan Chowk, Bharatpur",
+      name: "Nova Kitchen and Interiors",
+      location: "Putali Bazar Chowk, opposite of NMB Bank",
       images: [
         {
           image: "/store2_img1.jpg",
-          video_url: "https://www.youtube.com/shorts/G_KMlcZEsno",
+          iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1748860630805!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmJkd2dF!2m2!1d27.69802762845!2d84.42260443516426!3f0.1323818099937739!4f-14.268468738054366!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
         },
         {
           image:
-            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrHhX4CY-oEx3_iNmI0Gz7D3TyDakr06OR8URHdA12liCx8rxlIMeQKU4b5spkVjLvkK3NiXrVLCdDNnhyHiBx-umenynNldXpFCMmhyxbH56jp2GE88708egrnijjqQX6qNS_v=w243-h174-n-k-no-nu-pi-10-ya277.68-ro0-fo100",
-          video_url: null,
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noNvI8r5PTam9p1jcqWp33cfHK6ElroWIIFqOJiwgb_hI7hNMWXpckHmZOOA4ShlHgyrQjlzmAspLsA5-lzIryZ8SV36p5EgTcxPjIGNkinArbWgMrlrUSuc6VuH1PctyM7D8yI=s1360-w1360-h1020-rw",
         },
         {
           image:
-            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqi1NXQGUmltBtB4ZOGrAUQaDMBIaGnh4pi6219VP8toRF3GhmKd1jP0YjFyAHCr2F843hTCO82CjFHE9xVQxqEND6bQaQcDGoFaAqLE00MrPo4Gj8bAD-AJIMKJkdPl-NgJ2bw=s1360-w1360-h1020-rw",
-          video_url: null,
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npOdEGTPM4mw6XxVPYaLekINTcOeTjjPVxrpNWiT2l2TdjnOWWqtf7XMQL9Hu8Ta1W-N5ubCZuWpppJJfSXFQ6b6c98wn1I9vF1uLU113qFRTlnohaEAuM4BndtjdbdL94wicVa=s1360-w1360-h1020-rw",
         },
       ],
     },
@@ -83,66 +67,49 @@ export default function StoreGallery() {
       <div id="showroom" className="container mx-auto py-12">
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <h2 className="text-4xl font-playfair font-bold mb-4">Our Stores</h2>
-          <p className="text-muted-foreground text-lg">Explore our stores located at Milan Chowk and Main Road, Bharatpur</p>
+          <p className="text-muted-foreground text-lg">Explore our stores located at Main Road and Putali Bazar, Bharatpur</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {stores.map((store) => (
-            <div key={store.id}>
-              <h3 className="text-2xl text-center font-semibold mb-2">{store.name}</h3>
-              <p className="text-muted-foreground text-center mb-4">{store.location}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {stores.map((store) => {
+            const iframeImages = store.images.filter((img) => img.iframe);
+            const photoImages = store.images.filter((img) => !img.iframe);
 
-              <div className="grid grid-cols-2 gap-2">
-                {store.images.map((media, index) => {
-                  const videoId = media.video_url ? getYouTubeVideoId(media.video_url) : null;
-                  const isVideo = !!videoId;
+            return (
+              <div key={store.id} className="space-y-6">
+                <div className="text-center">
+                  <h3 className="text-2xl font-semibold mb-2">{store.name}</h3>
+                  <p className="text-muted-foreground mb-4">{store.location}</p>
+                </div>
 
-                  return (
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Iframes - take full width across both columns */}
+                  {iframeImages.map((media, index) => (
+                    <motion.div key={media.image + index} className="col-span-2 relative rounded-lg overflow-hidden aspect-video" whileHover={{scale: 1.02}} transition={{duration: 0.2}}>
+                      <div className="w-full h-full" dangerouslySetInnerHTML={{__html: media.iframe!}} />
+                    </motion.div>
+                  ))}
+
+                  {/* Images - one per column */}
+                  {photoImages.map((media, index) => (
                     <motion.div
                       key={media.image + index}
-                      className={`relative rounded-lg overflow-hidden cursor-pointer ${isVideo ? "col-span-2 aspect-[16/9]" : "aspect-square"}`}
+                      className="relative aspect-square overflow-hidden rounded-lg cursor-pointer"
                       whileHover={{scale: 1.03}}
                       transition={{duration: 0.2}}
-                      onClick={() => {
-                        if (isVideo && videoId) {
-                          setPlayingVideo(playingVideo === videoId ? null : videoId);
-                        } else {
-                          setSelectedImage(media.image);
-                        }
-                      }}
+                      onClick={() => setSelectedImage(media.image)}
                     >
-                      {isVideo ? (
-                        playingVideo === videoId ? (
-                          <iframe
-                            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-                            title={`Store video: ${store.name}`}
-                            className="w-full h-full"
-                            frameBorder="0"
-                            allow="autoplay; encrypted-media"
-                            allowFullScreen
-                          />
-                        ) : (
-                          <>
-                            <Image src={getYouTubeThumbnail(videoId)} alt={`${store.name} video`} fill className="object-cover" />
-                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                              <div className="bg-red-600 rounded-full p-3 shadow-lg">
-                                <Play className="w-6 h-6 text-white fill-white" />
-                              </div>
-                            </div>
-                          </>
-                        )
-                      ) : (
-                        <Image src={media.image} alt={`Image ${index + 1} of ${store.name}`} fill className="object-cover" />
-                      )}
+                      <Image src={media.image} alt={`Image ${index + 1} of ${store.name}`} fill className="object-cover" />
                     </motion.div>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
+      {/* Dialog for full-screen image */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-4xl">
           <DialogHeader>

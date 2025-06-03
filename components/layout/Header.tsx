@@ -176,9 +176,9 @@ export default function Header() {
             <div className="hidden md:flex space-x-2">
               <Button variant="outline" size="sm">
                 <Phone className="mr-2 h-4 w-4" />
-                <span className="hidden lg:inline">056-596428</span>
+                <span className="hidden lg:inline">056-596482</span>
               </Button>
-              <a href="https://wa.me/9779802146865" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/9779845046865" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="text-green-600">
                   <FaWhatsapp className="mr-2 h-4 w-4" /> WhatsApp
                 </Button>
@@ -266,10 +266,10 @@ export default function Header() {
                     <a href="tel:056596428">
                       <Button variant="outline" size="sm">
                         <Phone className="mr-2 h-4 w-4" />
-                        <span className="hidden lg:inline">056-596428</span>
+                        <span className="hidden lg:inline">056-596482</span>
                       </Button>
                     </a>
-                    <a href="https://wa.me/9779802146865" target="_blank" rel="noopener noreferrer" className="w-full">
+                    <a href="https://wa.me/9779845046865" target="_blank" rel="noopener noreferrer" className="w-full">
                       <Button variant="outline" size="sm" className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700">
                         <FaWhatsapp className="h-4 w-4" />
                       </Button>

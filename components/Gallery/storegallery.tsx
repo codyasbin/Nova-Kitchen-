@@ -25,34 +25,38 @@ export default function StoreGallery() {
     {
       id: 1,
       name: "Nova Kitchen and Interior",
-      location: "Main Road, Narayanghat",
+      location: "Main Road, Narayangarh(way to Pokhara Buspark)",
       images: [
         {
           image: "/store1_img1.jpg",
           iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1748860601726!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmFkZ0FF!2m2!1d27.69802338486377!2d84.4226342460351!3f202.8636869293947!4f-24.87974008615359!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
         },
         {
-          image: "/store1_img2.jpg",
+          image:
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrqEgMcAFi1M--BTgAAzYFBhNHOigDegnapZ9gyEXC9GCOMLfNh_wU_yJhOLIi-pYV9IQqZq95-kANl-YFHKb-D1rPabbFZnQNPkTjne4knUthwp5h6tc5NElrxfILsOp-KDEqw=s1360-w1360-h1020-rw",
         },
         {
-          image: "/store1_img3.jpg",
+          image:
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nok4qcXleG9up0Kd5AI_Nl732oYHkn_0KT_J5_-OT0i7WTA2aTfm6fGmCr-6R28WZVyl2F1SRNCSlmv9ZSRreUJEfoWgCva8UkETKg_jjReMaIbMimYwWJ6yBBZfPN2IKyPQmZO=s1360-w1360-h1020-rw",
         },
       ],
     },
     {
       id: 2,
-      name: "Milan Chowk Bharatpur",
-      location: "Milan Chowk, Bharatpur",
+      name: "Nova Kitchen and Interiors",
+      location: "Putali Bazar Chowk, opposite of NMB Bank",
       images: [
         {
           image: "/store2_img1.jpg",
           iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1748860630805!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmJkd2dF!2m2!1d27.69802762845!2d84.42260443516426!3f0.1323818099937739!4f-14.268468738054366!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
         },
         {
-          image: "/store2_img2.jpg",
+          image:
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noNvI8r5PTam9p1jcqWp33cfHK6ElroWIIFqOJiwgb_hI7hNMWXpckHmZOOA4ShlHgyrQjlzmAspLsA5-lzIryZ8SV36p5EgTcxPjIGNkinArbWgMrlrUSuc6VuH1PctyM7D8yI=s1360-w1360-h1020-rw",
         },
         {
-          image: "/store2_img3.jpg",
+          image:
+            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npOdEGTPM4mw6XxVPYaLekINTcOeTjjPVxrpNWiT2l2TdjnOWWqtf7XMQL9Hu8Ta1W-N5ubCZuWpppJJfSXFQ6b6c98wn1I9vF1uLU113qFRTlnohaEAuM4BndtjdbdL94wicVa=s1360-w1360-h1020-rw",
         },
       ],
     },
@@ -63,7 +67,7 @@ export default function StoreGallery() {
       <div id="showroom" className="container mx-auto py-12">
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <h2 className="text-4xl font-playfair font-bold mb-4">Our Stores</h2>
-          <p className="text-muted-foreground text-lg">Explore our stores located at Milan Chowk and Main Road, Bharatpur</p>
+          <p className="text-muted-foreground text-lg">Explore our stores located at Main Road and Putali Bazar, Bharatpur</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

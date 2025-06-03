@@ -4,7 +4,7 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Separator} from "@/components/ui/separator";
-import {Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Mail} from "lucide-react";
+import {Facebook, Twitter, Instagram, Youtube, MapPin, Phone, Smartphone, Mail} from "lucide-react";
 import {useState} from "react";
 
 const legalContents: Record<string, {title: string; body: JSX.Element}> = {
@@ -186,9 +186,11 @@ export default function Footer() {
             </h3>
             <p className="text-muted-foreground">Premium kitchen solutions for modern homes. Transforming spaces with innovative designs and quality craftsmanship since 2010.</p>
             <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 p-0">
-                <Facebook className="h-5 w-5" />
-              </Button>
+              <a href="https://www.facebook.com/NovaKitchenInteriors" target="_blank">
+                <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 p-0">
+                  <Facebook className="h-5 w-5" />
+                </Button>
+              </a>
               <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 p-0">
                 <Twitter className="h-5 w-5" />
               </Button>
@@ -268,15 +270,27 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex">
                 <MapPin className="h-5 w-5 mr-3 text-primary shrink-0" />
-                <span className="text-muted-foreground">MCXF+C9W Swastik Furniture, Near, Bharatpur 44200</span>
+                <span className="text-muted-foreground">Main Road, Narayangarh(way to Pokhara Buspark)</span>
+              </li>
+              <li className="flex">
+                <MapPin className="h-5 w-5 mr-3 text-primary shrink-0" />
+                <span className="text-muted-foreground">Putali Bazar Chowk, opposite of NMB Bank</span>
               </li>
               <li className="flex">
                 <Phone className="h-5 w-5 mr-3 text-primary shrink-0" />
-                <span className="text-muted-foreground">056-596428</span>
+                <span className="text-muted-foreground">056-596428 </span>
+              </li>
+              <li className="flex">
+                <Smartphone className="h-5 w-5 mr-3 text-primary shrink-0" />
+                <span className="text-muted-foreground"> 9845046865</span>
+              </li>
+              <li className="flex">
+                <Smartphone className="h-5 w-5 mr-3 text-primary shrink-0" />
+                <span className="text-muted-foreground"> 9801246865</span>
               </li>
               <li className="flex">
                 <Mail className="h-5 w-5 mr-3 text-primary shrink-0" />
-                <span className="text-muted-foreground">info@novakitchens.com</span>
+                <span className="text-muted-foreground">mathurashrestha1974@gmail.com</span>
               </li>
             </ul>
           </div>

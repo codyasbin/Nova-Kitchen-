@@ -17,7 +17,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-playfair font-bold mb-4">Our Story</h2>
           <p className="text-muted-foreground mb-4">
             Nova Kitchen & Interiors began with a simple vision – to transform ordinary kitchens into extraordinary spaces where functionality meets elegance. Founded in 2010 by a team of passionate
-            interior designers and kitchen specialists, we've grown from a small boutique store to one of India's premier kitchen solution providers.
+            interior designers and kitchen specialists, we've grown from a small store to one of Nepal's premier kitchen solution providers.
           </p>
           <p className="text-muted-foreground mb-4">
             We specialize in designing various types of kitchens, including L-shape, B-shape, G-shape, and straight-line configurations. Our offerings come in a range of premium finishes, such as

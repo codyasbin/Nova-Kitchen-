@@ -91,10 +91,11 @@ export default function ContactPage() {
             <div className="flex items-start">
               <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5" />
               <div>
-                <h4 className="font-medium">Visit Our Showroom</h4>
+                <h4 className="font-medium">Visit Our Showrooms</h4>
                 <p className="text-muted-foreground text-sm mt-1">
-                  MCXF+C9W Swastik Furniture, Near, Bharatpur 44200 <br />
-                  Milan Rd, Bharatpur 44200
+                  Main Road, Narayangarh(way to Pokhara Buspark)
+                  <br />
+                  Putali Bazar Chowk, opposite of NMB Bank
                 </p>
               </div>
             </div>
@@ -117,11 +118,7 @@ export default function ContactPage() {
               <Mail className="h-5 w-5 text-primary mr-3 mt-0.5" />
               <div>
                 <h4 className="font-medium">Email Us</h4>
-                <p className="text-muted-foreground text-sm mt-1">
-                  info@novakitchens.com
-                  <br />
-                  support@novakitchens.com
-                </p>
+                <p className="text-muted-foreground text-sm mt-1">mathurashrestha1974@gmail.com</p>
               </div>
             </div>
 

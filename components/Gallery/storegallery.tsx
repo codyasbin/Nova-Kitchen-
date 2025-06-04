@@ -85,7 +85,12 @@ export default function StoreGallery() {
                 <div className="grid grid-cols-2 gap-4">
                   {/* Iframes - take full width across both columns */}
                   {iframeImages.map((media, index) => (
-                    <motion.div key={media.image + index} className="col-span-2 relative rounded-lg overflow-hidden aspect-video" whileHover={{scale: 1.02}} transition={{duration: 0.2}}>
+                    <motion.div
+                      key={media.image + index}
+                      className="col-span-2 relative rounded-lg overflow-hidden Ssm:aspect-video aspect-[16/12] h-auto sm:h-auto"
+                      whileHover={{scale: 1.02}}
+                      transition={{duration: 0.2}}
+                    >
                       <div className="w-full h-full" dangerouslySetInnerHTML={{__html: media.iframe!}} />
                     </motion.div>
                   ))}

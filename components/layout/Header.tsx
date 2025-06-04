@@ -267,9 +267,8 @@ export default function Header() {
 
                   <div className="grid grid-cols-3 gap-2">
                     <a href="tel:056596482">
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700">
                         <Phone className="mr-2 h-4 w-4" />
-                        <span className="hidden lg:inline">056-596482</span>
                       </Button>
                     </a>
                     <a href="https://wa.me/9779845046865" target="_blank" rel="noopener noreferrer" className="w-full">

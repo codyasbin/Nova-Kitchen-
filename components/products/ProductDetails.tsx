@@ -17,6 +17,31 @@ export default function ProductDetails({product, variants}: {product: any; varia
   console.log("Variants:", variants);
   const [selectedVariant, setSelectedVariant] = useState(0);
 
+  // --- NEW STATE FOR COPY STATUS ---
+  const [copyStatus, setCopyStatus] = useState("");
+
+  // --- NEW FUNCTION TO HANDLE COPYING ---
+  const handleCopyLink = async () => {
+    // Ensure this runs only on the client side
+    if (typeof window === "undefined" || !navigator.clipboard) {
+      setCopyStatus("Clipboard not supported.");
+      setTimeout(() => setCopyStatus(""), 3000);
+      return;
+    }
+
+    try {
+      const productUrl = window.location.href;
+
+      await navigator.clipboard.writeText(productUrl);
+      setCopyStatus("Link copied to the clipboard!");
+      setTimeout(() => setCopyStatus(""), 2000);
+    } catch (err) {
+      console.error("Failed to copy link: ", err);
+      setCopyStatus("Failed to copy link.");
+      setTimeout(() => setCopyStatus(""), 5000);
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -110,17 +135,15 @@ export default function ProductDetails({product, variants}: {product: any; varia
               </Button>
             </a>
           </div>
-          {/* 
+
           <div className="flex items-center gap-4 mt-4">
-            <Button variant="ghost" size="sm">
-              <Bookmark className="mr-2 h-4 w-4" />
-              Save
-            </Button>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" onClick={handleCopyLink}>
               <Share2 className="mr-2 h-4 w-4" />
               Share
             </Button>
-          </div> */}
+
+            {copyStatus && <p className={`text-sm ${copyStatus.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{copyStatus}</p>}
+          </div>
 
           <Card className="p-4 bg-muted/50 border border-muted mt-6">
             <div className="flex items-start gap-2">

@@ -110,7 +110,7 @@ export default function ProductDetails({product, variants}: {product: any; varia
               </Button>
             </a>
           </div>
-
+          {/* 
           <div className="flex items-center gap-4 mt-4">
             <Button variant="ghost" size="sm">
               <Bookmark className="mr-2 h-4 w-4" />
@@ -120,7 +120,7 @@ export default function ProductDetails({product, variants}: {product: any; varia
               <Share2 className="mr-2 h-4 w-4" />
               Share
             </Button>
-          </div>
+          </div> */}
 
           <Card className="p-4 bg-muted/50 border border-muted mt-6">
             <div className="flex items-start gap-2">

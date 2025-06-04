@@ -29,7 +29,7 @@ export default function StoreGallery() {
       images: [
         {
           image: "/store1_img1.jpg",
-          iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1748860601726!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmFkZ0FF!2m2!1d27.69802338486377!2d84.4226342460351!3f202.8636869293947!4f-24.87974008615359!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+          iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1749029310530!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmEzX3dF!2m2!1d27.6980700472754!2d84.42257670783533!3f204.26!4f6.640000000000001!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
         },
         {
           image:

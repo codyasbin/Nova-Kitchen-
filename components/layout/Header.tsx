@@ -185,12 +185,6 @@ export default function Header() {
                 </Button>
               </a>
 
-              <a href="https://m.me/NovaKitchenInteriors" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" className="text-blue-600 hover:text-white hover:bg-blue-600">
-                  <FaFacebookMessenger className="mr-2 h-4 w-4" /> Messenger
-                </Button>
-              </a>
-
               <Link href="/contact">
                 <Button size="sm">Book Consultation</Button>
               </Link>

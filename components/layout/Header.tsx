@@ -263,7 +263,7 @@ export default function Header() {
                   <Button className="w-full bg-primary hover:bg-primary/90">Book Consultation</Button>
 
                   <div className="grid grid-cols-3 gap-2">
-                    <a href="tel:056596428">
+                    <a href="tel:056596482">
                       <Button variant="outline" size="sm">
                         <Phone className="mr-2 h-4 w-4" />
                         <span className="hidden lg:inline">056-596482</span>
@@ -281,7 +281,7 @@ export default function Header() {
                     </a> */}
                   </div>
 
-                  <div className="text-xs text-center text-muted-foreground">Call or message us: 056-596428</div>
+                  <div className="text-xs text-center text-muted-foreground">Call us at: 056-596482</div>
                 </div>
               </SheetContent>
             </Sheet>

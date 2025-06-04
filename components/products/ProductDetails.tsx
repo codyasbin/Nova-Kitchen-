@@ -10,6 +10,7 @@ import RelatedProducts from "@/components/products/RelatedProducts";
 import ProductGallery from "@/components/products/ProductGallery";
 import {Bookmark, Check, Info, Phone, Share2} from "lucide-react";
 import {cn} from "@/lib/utils";
+import Link from "next/link";
 
 export default function ProductDetails({product, variants}: {product: any; variants: any[]}) {
   console.log("Product Details:", product);
@@ -97,13 +98,17 @@ export default function ProductDetails({product, variants}: {product: any; varia
           </Tabs>
 
           <div className="flex gap-4 mt-8">
-            <Button size="lg" className="flex-1">
-              Enquire Now
-            </Button>
-            <Button size="lg" variant="outline" className="flex-1">
-              <Phone className="mr-2 h-4 w-4" />
-              Contact
-            </Button>
+            <Link href="/contact">
+              <Button size="lg" className="flex-1">
+                Enquire Now
+              </Button>
+            </Link>
+            <a href={`https://wa.me/9779845046865?text=${encodeURIComponent(`Hi, I would like to enquire about ${product.name}`)}`} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="flex-1">
+                <Phone className="mr-2 h-4 w-4" />
+                Contact
+              </Button>
+            </a>
           </div>
 
           <div className="flex items-center gap-4 mt-4">

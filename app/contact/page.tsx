@@ -207,7 +207,7 @@ export default function ContactPage() {
         </Card>
       </div>
 
-      <div id="locate" className="mt-16">
+      <section id="locate" className="mt-16">
         <h3 className="text-2xl font-bold mb-4 flex items-center justify-center gap-2">
           <span>
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
@@ -265,7 +265,7 @@ export default function ContactPage() {
             <div className="text-center text-muted-foreground pb-4 px-6 text-sm">Milan Rd, Bharatpur 44200</div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

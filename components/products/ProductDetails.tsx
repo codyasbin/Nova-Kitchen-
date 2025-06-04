@@ -11,7 +11,7 @@ import ProductGallery from "@/components/products/ProductGallery";
 import {Bookmark, Check, Info, Phone, Share2} from "lucide-react";
 import {cn} from "@/lib/utils";
 import Link from "next/link";
-
+import ScrollToTop from "@/components/scrolltotop";
 export default function ProductDetails({product, variants}: {product: any; variants: any[]}) {
   console.log("Product Details:", product);
   console.log("Variants:", variants);
@@ -44,6 +44,7 @@ export default function ProductDetails({product, variants}: {product: any; varia
 
   return (
     <>
+      <ScrollToTop />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <ProductGallery images={variants[selectedVariant]?.images || product.images} />
 

@@ -6,7 +6,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {ThemeProvider} from "@/components/providers/ThemeProvider";
 import {Toaster} from "@/components/ui/toaster";
-import ScrollToTop from "@/components/scrolltotop";
+
 import MessengerChatHead from "@/components/layout/MessengerChatHead";
 
 const inter = Inter({
@@ -35,7 +35,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className="font-sans">
         <ThemeProvider>
           <div className="flex min-h-screen flex-col">
-            <ScrollToTop />
             <Header />
             <main className="flex-1">{children}</main>
             <MessengerChatHead />

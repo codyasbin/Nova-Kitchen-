@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import {ThemeProvider} from "@/components/providers/ThemeProvider";
 import {Toaster} from "@/components/ui/toaster";
 import ScrollToTop from "@/components/scrolltotop";
+import MessengerChatHead from "@/components/layout/MessengerChatHead";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             <ScrollToTop />
             <Header />
             <main className="flex-1">{children}</main>
+            <MessengerChatHead />
             <Footer />
           </div>
           <Toaster />

@@ -8,7 +8,7 @@ import {Card} from "@/components/ui/card";
 import {Separator} from "@/components/ui/separator";
 import RelatedProducts from "@/components/products/RelatedProducts";
 import ProductGallery from "@/components/products/ProductGallery";
-import {Bookmark, Check, Info, Phone, Share2} from "lucide-react";
+import {Check, Info, Phone, Share2} from "lucide-react";
 import {cn} from "@/lib/utils";
 import Link from "next/link";
 import ScrollToTop from "@/components/scrolltotop";
@@ -19,7 +19,11 @@ export default function ProductDetails({product, variants}: {product: any; varia
 
   // --- NEW STATE FOR COPY STATUS ---
   const [copyStatus, setCopyStatus] = useState("");
-
+  const selected = variants[selectedVariant] || product;
+  const price = parseFloat(selected.price);
+  const discount = parseFloat(selected.discount || "0");
+  const discountAmount = (price * discount) / 100;
+  const discountedPrice = price - discountAmount;
   // --- NEW FUNCTION TO HANDLE COPYING ---
   const handleCopyLink = async () => {
     // Ensure this runs only on the client side
@@ -65,10 +69,18 @@ export default function ProductDetails({product, variants}: {product: any; varia
             </div>
           </div>
 
-          <div className="flex items-end gap-4">
-            <p className="text-2xl font-semibold">₹{variants[selectedVariant]?.price || product.price}</p>
-            {variants[selectedVariant]?.originalPrice && <p className="text-muted-foreground line-through">₹{variants[selectedVariant]?.originalPrice}</p>}
-            {variants[selectedVariant]?.discount && <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">{variants[selectedVariant]?.discount}% OFF</span>}
+          <div className="flex flex-col gap-1">
+            <div className="flex items-end gap-4">
+              {discount > 0 ? (
+                <>
+                  <p className="text-2xl font-semibold text-green-700">₹{discountedPrice.toFixed(2)}</p>
+                  <p className="text-muted-foreground line-through">₹{price.toFixed(2)}</p>
+                  <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">{discount}% OFF</span>
+                </>
+              ) : (
+                <p className="text-2xl font-semibold">₹{price.toFixed(2)}</p>
+              )}
+            </div>
           </div>
 
           <Separator />

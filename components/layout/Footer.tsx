@@ -277,17 +277,18 @@ export default function Footer() {
                 <span className="text-muted-foreground">Putali Bazar Chowk, opposite of NMB Bank</span>
               </li>
               <li className="flex">
+                <MapPin className="h-5 w-5 mr-3 text-primary shrink-0" />
+                <span className="text-muted-foreground">Milan Chowk, Opposite of Yamaha showroom. (150m away from Paras Buspark)</span>
+              </li>
+              <li className="flex">
                 <Phone className="h-5 w-5 mr-3 text-primary shrink-0" />
                 <span className="text-muted-foreground">056-596482</span>
               </li>
               <li className="flex">
                 <Smartphone className="h-5 w-5 mr-3 text-primary shrink-0" />
-                <span className="text-muted-foreground"> 9845046865</span>
+                <span className="text-muted-foreground"> 9845046865, 9801246865</span>
               </li>
-              <li className="flex">
-                <Smartphone className="h-5 w-5 mr-3 text-primary shrink-0" />
-                <span className="text-muted-foreground"> 9801246865</span>
-              </li>
+
               <li className="flex">
                 <Mail className="h-5 w-5 mr-3 text-primary shrink-0" />
                 <span className="text-muted-foreground">mathurashrestha1974@gmail.com</span>

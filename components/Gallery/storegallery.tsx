@@ -22,7 +22,7 @@ export default function StoreGallery() {
 
   // Demo data with Google Street View iframes
   const stores: Store[] = [
-    {
+    {``
       id: 1,
       name: "Nova Kitchen and Interiors",
       location: "Main Road, Narayangarh(way to Pokhara Buspark)",

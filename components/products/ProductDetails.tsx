@@ -8,16 +8,47 @@ import {Card} from "@/components/ui/card";
 import {Separator} from "@/components/ui/separator";
 import RelatedProducts from "@/components/products/RelatedProducts";
 import ProductGallery from "@/components/products/ProductGallery";
-import {Bookmark, Check, Info, Phone, Share2} from "lucide-react";
+import {Check, Info, Phone, Share2} from "lucide-react";
 import {cn} from "@/lib/utils";
-
+import Link from "next/link";
+import ScrollToTop from "@/components/scrolltotop";
 export default function ProductDetails({product, variants}: {product: any; variants: any[]}) {
   console.log("Product Details:", product);
   console.log("Variants:", variants);
   const [selectedVariant, setSelectedVariant] = useState(0);
 
+  // --- NEW STATE FOR COPY STATUS ---
+  const [copyStatus, setCopyStatus] = useState("");
+  const selected = variants[selectedVariant] || product;
+  const price = parseFloat(selected.price);
+  const discount = parseFloat(selected.discount || "0");
+  const discountAmount = (price * discount) / 100;
+  const discountedPrice = price - discountAmount;
+  // --- NEW FUNCTION TO HANDLE COPYING ---
+  const handleCopyLink = async () => {
+    // Ensure this runs only on the client side
+    if (typeof window === "undefined" || !navigator.clipboard) {
+      setCopyStatus("Clipboard not supported.");
+      setTimeout(() => setCopyStatus(""), 3000);
+      return;
+    }
+
+    try {
+      const productUrl = window.location.href;
+
+      await navigator.clipboard.writeText(productUrl);
+      setCopyStatus("Link copied to the clipboard!");
+      setTimeout(() => setCopyStatus(""), 2000);
+    } catch (err) {
+      console.error("Failed to copy link: ", err);
+      setCopyStatus("Failed to copy link.");
+      setTimeout(() => setCopyStatus(""), 5000);
+    }
+  };
+
   return (
     <>
+      <ScrollToTop />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <ProductGallery images={variants[selectedVariant]?.images || product.images} />
 
@@ -38,10 +69,18 @@ export default function ProductDetails({product, variants}: {product: any; varia
             </div>
           </div>
 
-          <div className="flex items-end gap-4">
-            <p className="text-2xl font-semibold">₹{variants[selectedVariant]?.price || product.price}</p>
-            {variants[selectedVariant]?.originalPrice && <p className="text-muted-foreground line-through">₹{variants[selectedVariant]?.originalPrice}</p>}
-            {variants[selectedVariant]?.discount && <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">{variants[selectedVariant]?.discount}% OFF</span>}
+          <div className="flex flex-col gap-1">
+            <div className="flex items-end gap-4">
+              {discount > 0 ? (
+                <>
+                  <p className="text-2xl font-semibold text-green-700">₹{discountedPrice.toFixed(2)}</p>
+                  <p className="text-muted-foreground line-through">₹{price.toFixed(2)}</p>
+                  <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">{discount}% OFF</span>
+                </>
+              ) : (
+                <p className="text-2xl font-semibold">₹{price.toFixed(2)}</p>
+              )}
+            </div>
           </div>
 
           <Separator />
@@ -97,24 +136,26 @@ export default function ProductDetails({product, variants}: {product: any; varia
           </Tabs>
 
           <div className="flex gap-4 mt-8">
-            <Button size="lg" className="flex-1">
-              Enquire Now
-            </Button>
-            <Button size="lg" variant="outline" className="flex-1">
-              <Phone className="mr-2 h-4 w-4" />
-              Contact
-            </Button>
+            <Link href="/contact">
+              <Button size="lg" className="flex-1">
+                Enquire Now
+              </Button>
+            </Link>
+            <a href={`https://wa.me/9779845046865?text=${encodeURIComponent(`Hi, I would like to enquire about ${product.name}`)}`} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="flex-1">
+                <Phone className="mr-2 h-4 w-4" />
+                Contact
+              </Button>
+            </a>
           </div>
 
           <div className="flex items-center gap-4 mt-4">
-            <Button variant="ghost" size="sm">
-              <Bookmark className="mr-2 h-4 w-4" />
-              Save
-            </Button>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" onClick={handleCopyLink}>
               <Share2 className="mr-2 h-4 w-4" />
               Share
             </Button>
+
+            {copyStatus && <p className={`text-sm ${copyStatus.includes("Failed") ? "text-red-500" : "text-green-500"}`}>{copyStatus}</p>}
           </div>
 
           <Card className="p-4 bg-muted/50 border border-muted mt-6">

@@ -29,7 +29,7 @@ export default function StoreGallery() {
       images: [
         {
           image: "/store1_img1.jpg",
-          iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1748860601726!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmFkZ0FF!2m2!1d27.69802338486377!2d84.4226342460351!3f202.8636869293947!4f-24.87974008615359!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+          iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1749029310530!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmEzX3dF!2m2!1d27.6980700472754!2d84.42257670783533!3f204.26!4f6.640000000000001!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
         },
         {
           image:
@@ -85,7 +85,12 @@ export default function StoreGallery() {
                 <div className="grid grid-cols-2 gap-4">
                   {/* Iframes - take full width across both columns */}
                   {iframeImages.map((media, index) => (
-                    <motion.div key={media.image + index} className="col-span-2 relative rounded-lg overflow-hidden aspect-video" whileHover={{scale: 1.02}} transition={{duration: 0.2}}>
+                    <motion.div
+                      key={media.image + index}
+                      className="col-span-2 relative rounded-lg overflow-hidden Ssm:aspect-video aspect-[16/12] h-auto sm:h-auto"
+                      whileHover={{scale: 1.02}}
+                      transition={{duration: 0.2}}
+                    >
                       <div className="w-full h-full" dangerouslySetInnerHTML={{__html: media.iframe!}} />
                     </motion.div>
                   ))}

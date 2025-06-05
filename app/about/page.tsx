@@ -79,7 +79,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {/* === Economy Range === */}
-            <div className="group relative h-full rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+            <div className="group relative h-full rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm hover:shadow-xl dark:shadow-gray-900/20 dark:hover:shadow-gray-900/40 transition-all duration-500 flex flex-col">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                 style={{
@@ -87,28 +87,28 @@ export default function AboutPage() {
                     "url(https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/80 group-hover:from-white/70 group-hover:via-white/60 group-hover:to-white/70 transition-opacity duration-500" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-green-100/20 rounded-full -translate-y-16 translate-x-16 group-hover:translate-y-0 group-hover:translate-x-8 transition-all duration-700" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-100/30 rounded-full translate-y-12 -translate-x-12 group-hover:translate-y-6 group-hover:-translate-x-6 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/80 group-hover:from-white/70 group-hover:via-white/60 group-hover:to-white/70 dark:from-gray-900/80 dark:via-gray-900/70 dark:to-gray-900/80 dark:group-hover:from-gray-900/70 dark:group-hover:via-gray-900/60 dark:group-hover:to-gray-900/70 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-green-100/20 dark:bg-green-900/20 rounded-full -translate-y-16 translate-x-16 group-hover:translate-y-0 group-hover:translate-x-8 transition-all duration-700" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-100/30 dark:bg-green-900/30 rounded-full translate-y-12 -translate-x-12 group-hover:translate-y-6 group-hover:-translate-x-6 transition-all duration-700" />
 
               <div className="relative z-10 p-8 flex flex-col h-full">
                 <div className="text-center mb-8">
                   <div className="inline-block mb-4 w-16 h-1 bg-green-500 rounded-full" />
-                  <h3 className="text-3xl font-playfair font-bold mb-3 text-gray-800 group-hover:text-green-800 transition-colors">Economy</h3>
-                  <p className="text-gray-600 font-light text-lg">Affordable solutions without compromising quality</p>
+                  <h3 className="text-3xl font-playfair font-bold mb-3 text-gray-800 dark:text-gray-100 group-hover:text-green-800 dark:group-hover:text-green-400 transition-colors">Economy</h3>
+                  <p className="text-gray-600 dark:text-gray-300 font-light text-lg">Affordable solutions without compromising quality</p>
                 </div>
                 <div className="space-y-4 mt-auto">
                   {["Laminate Matt Finishing", "Hi Gloss"].map((item, i) => (
                     <div
                       key={item}
-                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-green-100 shadow-[0_0_12px_rgba(34,197,94,0.4)] group-hover:shadow-[0_0_18px_rgba(34,197,94,0.7)] group-hover:bg-green-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
+                      className={`flex items-center p-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl border border-green-100 dark:border-green-800 shadow-[0_0_12px_rgba(34,197,94,0.4)] group-hover:shadow-[0_0_18px_rgba(34,197,94,0.7)] group-hover:bg-green-50/80 dark:group-hover:bg-green-900/30 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
                         i * 75
                       }ms]`}
                     >
-                      <svg className="w-5 h-5 text-green-600 mr-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-5 h-5 text-green-600 dark:text-green-400 mr-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="font-semibold text-gray-800">{item}</span>
+                      <span className="font-semibold text-gray-800 dark:text-gray-100">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -116,33 +116,33 @@ export default function AboutPage() {
             </div>
 
             {/* === Premium Range === */}
-            <div className="group relative h-full rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+            <div className="group relative h-full rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm hover:shadow-xl dark:shadow-gray-900/20 dark:hover:shadow-gray-900/40 transition-all duration-500 flex flex-col">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                 style={{backgroundImage: "url(https://www.nobiliaindia.com/images/campaing/luxury-modular-kitchen.jpg)"}}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/80 group-hover:from-white/70 group-hover:via-white/60 group-hover:to-white/70 transition-opacity duration-500" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100/20 rounded-full -translate-y-16 translate-x-16 group-hover:translate-y-0 group-hover:translate-x-8 transition-all duration-700" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-100/30 rounded-full translate-y-12 -translate-x-12 group-hover:translate-y-6 group-hover:-translate-x-6 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/80 group-hover:from-white/70 group-hover:via-white/60 group-hover:to-white/70 dark:from-gray-900/80 dark:via-gray-900/70 dark:to-gray-900/80 dark:group-hover:from-gray-900/70 dark:group-hover:via-gray-900/60 dark:group-hover:to-gray-900/70 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100/20 dark:bg-blue-900/20 rounded-full -translate-y-16 translate-x-16 group-hover:translate-y-0 group-hover:translate-x-8 transition-all duration-700" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-100/30 dark:bg-blue-900/30 rounded-full translate-y-12 -translate-x-12 group-hover:translate-y-6 group-hover:-translate-x-6 transition-all duration-700" />
 
               <div className="relative z-10 p-8 flex flex-col h-full">
                 <div className="text-center mb-8">
                   <div className="inline-block mb-4 w-16 h-1 bg-blue-500 rounded-full" />
-                  <h3 className="text-3xl font-playfair font-bold mb-3 text-gray-800 group-hover:text-blue-800 transition-colors">Premium</h3>
-                  <p className="text-gray-600 font-light text-lg">Enhanced features with superior aesthetics</p>
+                  <h3 className="text-3xl font-playfair font-bold mb-3 text-gray-800 dark:text-gray-100 group-hover:text-blue-800 dark:group-hover:text-blue-400 transition-colors">Premium</h3>
+                  <p className="text-gray-600 dark:text-gray-300 font-light text-lg">Enhanced features with superior aesthetics</p>
                 </div>
                 <div className="space-y-4 mt-auto">
                   {["Acrylic Finishing", "Premium Materials"].map((item, i) => (
                     <div
                       key={item}
-                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-blue-100 shadow-[0_0_12px_rgba(59,130,246,0.4)] group-hover:shadow-[0_0_18px_rgba(59,130,246,0.7)] group-hover:bg-blue-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
+                      className={`flex items-center p-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl border border-blue-100 dark:border-blue-800 shadow-[0_0_12px_rgba(59,130,246,0.4)] group-hover:shadow-[0_0_18px_rgba(59,130,246,0.7)] group-hover:bg-blue-50/80 dark:group-hover:bg-blue-900/30 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
                         i * 75
                       }ms]`}
                     >
-                      <svg className="w-5 h-5 text-blue-600 mr-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="font-semibold text-gray-800">{item}</span>
+                      <span className="font-semibold text-gray-800 dark:text-gray-100">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -150,33 +150,39 @@ export default function AboutPage() {
             </div>
 
             {/* === Luxury Range === */}
-            <div className="group relative h-full rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+            <div className="group relative h-full rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm hover:shadow-xl dark:shadow-gray-900/20 dark:hover:shadow-gray-900/40 transition-all duration-500 flex flex-col">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                 style={{backgroundImage: "url(https://www.oppeinhome.com/upload/images/ueditor/20250422/classic-off-white-floor-to-ceiling-luxury-kitchen-design.webp)"}}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/80 group-hover:from-white/70 group-hover:via-white/60 group-hover:to-white/70 transition-opacity duration-500" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-100/20 rounded-full -translate-y-16 translate-x-16 group-hover:translate-y-0 group-hover:translate-x-8 transition-all duration-700" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-100/30 rounded-full translate-y-12 -translate-x-12 group-hover:translate-y-6 group-hover:-translate-x-6 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/80 group-hover:from-white/70 group-hover:via-white/60 group-hover:to-white/70 dark:from-gray-900/80 dark:via-gray-900/70 dark:to-gray-900/80 dark:group-hover:from-gray-900/70 dark:group-hover:via-gray-900/60 dark:group-hover:to-gray-900/70 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-100/20 dark:bg-purple-900/20 rounded-full -translate-y-16 translate-x-16 group-hover:translate-y-0 group-hover:translate-x-8 transition-all duration-700" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-100/30 dark:bg-purple-900/30 rounded-full translate-y-12 -translate-x-12 group-hover:translate-y-6 group-hover:-translate-x-6 transition-all duration-700" />
 
               <div className="relative z-10 p-8 flex flex-col h-full">
                 <div className="text-center mb-8">
                   <div className="inline-block mb-4 w-16 h-1 bg-purple-500 rounded-full" />
-                  <h3 className="text-3xl font-playfair font-bold mb-3 text-gray-800 group-hover:text-purple-800 transition-colors">Luxury</h3>
-                  <p className="text-gray-600 font-light text-lg">Premium materials with exquisite craftsmanship</p>
+                  <h3 className="text-3xl font-playfair font-bold mb-3 text-gray-800 dark:text-gray-100 group-hover:text-purple-800 dark:group-hover:text-purple-400 transition-colors">Luxury</h3>
+                  <p className="text-gray-600 dark:text-gray-300 font-light text-lg">Premium materials with exquisite craftsmanship</p>
                 </div>
                 <div className="space-y-4 mt-auto">
                   {["Membrane", "Acrylic", "PU", "Glass"].map((item, i) => (
                     <div
                       key={item}
-                      className={`flex items-center p-4 bg-white/70 backdrop-blur-md rounded-xl border border-purple-100 shadow-[0_0_12px_rgba(168,85,247,0.4)] group-hover:shadow-[0_0_18px_rgba(168,85,247,0.7)] group-hover:bg-purple-50/80 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
+                      className={`flex items-center p-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl border border-purple-100 dark:border-purple-800 shadow-[0_0_12px_rgba(168,85,247,0.4)] group-hover:shadow-[0_0_18px_rgba(168,85,247,0.7)] group-hover:bg-purple-50/80 dark:group-hover:bg-purple-900/30 transition-all duration-300 transform group-hover:translate-x-1 delay-[${
                         i * 75
                       }ms]`}
                     >
-                      <svg className="w-5 h-5 text-purple-600 mr-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg
+                        className="w-5 h-5 text-purple-600 dark:text-purple-400 mr-4 group-hover:scale-110 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className=" text-gray-800 font-semibold">{item}</span>
+                      <span className=" text-gray-800 dark:text-gray-100 font-semibold">{item}</span>
                     </div>
                   ))}
                 </div>

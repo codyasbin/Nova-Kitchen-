@@ -10,7 +10,7 @@ import {Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle} from "@/comp
 import {Menu, Search, Phone, X, ChevronRight, ChevronDown} from "lucide-react";
 import {Input} from "@/components/ui/input";
 import {cn} from "@/lib/utils";
-import {FaWhatsapp, FaViber} from "react-icons/fa";
+import {FaWhatsapp, FaViber, FaFacebookMessenger} from "react-icons/fa";
 import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle} from "@/components/ui/navigation-menu";
 import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@/components/ui/collapsible";
 
@@ -178,17 +178,14 @@ export default function Header() {
                 <Phone className="mr-2 h-4 w-4" />
                 <span className="hidden lg:inline">056-596482</span>
               </Button>
+
               <a href="https://wa.me/9779845046865" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="text-green-600">
                   <FaWhatsapp className="mr-2 h-4 w-4" /> WhatsApp
                 </Button>
               </a>
-              {/* <a href="viber://chat?number=9779805868705" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" className="text-purple-600 hover:text-white hover:bg-purple-600">
-                  <FaViber className="mr-2 h-4 w-4" /> Viber
-                </Button>
-              </a> */}
-              <Link href={"/contact"}>
+
+              <Link href="/contact">
                 <Button size="sm">Book Consultation</Button>
               </Link>
             </div>
@@ -263,10 +260,9 @@ export default function Header() {
                   <Button className="w-full bg-primary hover:bg-primary/90">Book Consultation</Button>
 
                   <div className="grid grid-cols-3 gap-2">
-                    <a href="tel:056596428">
-                      <Button variant="outline" size="sm">
+                    <a href="tel:056596482">
+                      <Button variant="outline" size="sm" className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700">
                         <Phone className="mr-2 h-4 w-4" />
-                        <span className="hidden lg:inline">056-596482</span>
                       </Button>
                     </a>
                     <a href="https://wa.me/9779845046865" target="_blank" rel="noopener noreferrer" className="w-full">
@@ -274,14 +270,14 @@ export default function Header() {
                         <FaWhatsapp className="h-4 w-4" />
                       </Button>
                     </a>
-                    {/* <a href="viber://chat?number=910000000000" target="_blank" rel="noopener noreferrer" className="w-full">
-                      <Button variant="outline" size="sm" className="w-full bg-purple-50 text-purple-600 border-purple-200 hover:bg-purple-100 hover:text-purple-700">
-                        <FaViber className="h-4 w-4" />
+                    <a href="https://m.me/NovaKitchenInteriors" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm" className="w-full bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:text-green-700">
+                        <FaFacebookMessenger className="h-4 w-4" />
                       </Button>
-                    </a> */}
+                    </a>
                   </div>
 
-                  <div className="text-xs text-center text-muted-foreground">Call or message us: 056-596428</div>
+                  <div className="text-xs text-center text-muted-foreground">Call us at: 056-596482</div>
                 </div>
               </SheetContent>
             </Sheet>

@@ -94,8 +94,6 @@ export default function ContactPage() {
                 <h4 className="font-medium">Visit Our Showrooms</h4>
                 <p className="text-muted-foreground text-sm mt-1">
                   - Main Road, Narayangarh(way to Pokhara Buspark).
-                  <br />
-                  - Putali Bazar Chowk, opposite of NMB Bank.
                   <br />- Milan Chowk, Paras Buspark, opposite of Yamaha Showroom
                 </p>
               </div>
@@ -218,7 +216,7 @@ export default function ContactPage() {
           Find Us Here
         </h3>
         <p className="text-muted-foreground text-lg text-center mb-8">Visit our showroom or get directions to our location.</p>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col items-center bg-white rounded-xl shadow-lg border transition hover:shadow-2xl">
             <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
               <iframe
@@ -240,7 +238,11 @@ export default function ContactPage() {
               </span>
               <span className="font-semibold">Nova Kitchen & Interiors</span>
             </div>
-            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">Main Road, Narayangarh(way to Pokhara Buspark)</div>
+            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">
+              Main Road, Narayangarh(way to Pokhara Buspark)
+              <br />
+              Putali Bazar Chowk Opposite of NMB Bank
+            </div>
           </div>
           <div className="flex flex-col items-center bg-white rounded-xl shadow-lg border transition hover:shadow-2xl">
             <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
@@ -263,30 +265,11 @@ export default function ContactPage() {
               </span>
               <span className="font-semibold">Nova Kitchen & Interiors</span>
             </div>
-            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">Milan Chowk, Bharatpur (150m near Paras Buspark, Opposite of Yamaha Showroom)</div>
-          </div>
-          <div className="flex flex-col items-center bg-white rounded-xl shadow-lg border transition hover:shadow-2xl">
-            <div className="w-full h-[320px] rounded-t-xl overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.624663214901!2d84.42174717546705!3d27.69799327618796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fb471a53c9d7%3A0xcdd83621beb9a03f!2sPutali%20bazar%2C%20Bharatpur%2044200!5e0!3m2!1sen!2snp!4v1749030208933!5m2!1sen!2snp"
-                width="100%"
-                height="100%"
-                style={{border: 0, minHeight: 320}}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Nova Kitchen & Interiors"
-              ></iframe>
+            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">
+              Milan Chowk, Bharatpur (150m near Paras Buspark)
+              <br />
+              Opposite of Yamaha Showroom, Along with United Marbles
             </div>
-            <div className="flex items-center gap-2 py-4 px-6 w-full justify-center">
-              <span className="text-primary text-xl">
-                <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-                  <path fill="#2563eb" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"></path>
-                </svg>
-              </span>
-              <span className="font-semibold">Putali Bazar chowk Bharatpur</span>
-            </div>
-            <div className="text-center text-muted-foreground pb-4 px-6 text-sm">Putali Bazar Chowk, opposite of NMB Bank</div>
           </div>
         </div>
       </section>

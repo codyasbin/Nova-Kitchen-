@@ -270,11 +270,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex">
                 <MapPin className="h-5 w-5 mr-3 text-primary shrink-0" />
-                <span className="text-muted-foreground">Main Road, Narayangarh(way to Pokhara Buspark)</span>
-              </li>
-              <li className="flex">
-                <MapPin className="h-5 w-5 mr-3 text-primary shrink-0" />
-                <span className="text-muted-foreground">Putali Bazar Chowk, opposite of NMB Bank</span>
+                <span className="text-muted-foreground">Main Road, Narayangarh(way to Pokhara Buspark), Putali Bazar Chowk, opposite of NMB Bank</span>
               </li>
               <li className="flex">
                 <MapPin className="h-5 w-5 mr-3 text-primary shrink-0" />

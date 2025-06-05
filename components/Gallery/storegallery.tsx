@@ -24,7 +24,7 @@ export default function StoreGallery() {
   const stores: Store[] = [
     {
       id: 1,
-      name: "Nova Kitchen and Interior",
+      name: "Nova Kitchen and Interiors",
       location: "Main Road, Narayangarh(way to Pokhara Buspark)",
       images: [
         {
@@ -44,7 +44,7 @@ export default function StoreGallery() {
     {
       id: 2,
       name: "Nova Kitchen and Interiors",
-      location: "Putali Bazar Chowk, opposite of NMB Bank",
+      location: "Milan Chowk, near Paras Buspark ",
       images: [
         {
           image: "/store2_img1.jpg",
@@ -67,7 +67,7 @@ export default function StoreGallery() {
       <div id="showroom" className="container mx-auto py-12">
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <h2 className="text-4xl font-playfair font-bold mb-4">Our Stores Gallery</h2>
-          <p className="text-muted-foreground text-lg">Explore our stores located at Main Road and Putali Bazar, Bharatpur</p>
+          <p className="text-muted-foreground text-lg">Explore our stores located at Main Road and Milan Chowk, Bharatpur</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

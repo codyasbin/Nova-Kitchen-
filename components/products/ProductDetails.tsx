@@ -12,6 +12,7 @@ import {Check, Info, Phone, Share2} from "lucide-react";
 import {cn} from "@/lib/utils";
 import Link from "next/link";
 import ScrollToTop from "@/components/scrolltotop";
+
 export default function ProductDetails({product, variants}: {product: any; variants: any[]}) {
   console.log("Product Details:", product);
   console.log("Variants:", variants);
@@ -21,13 +22,21 @@ export default function ProductDetails({product, variants}: {product: any; varia
   const [copyStatus, setCopyStatus] = useState("");
   const selected = selectedVariant >= 0 ? variants[selectedVariant] : product;
 
+  // Pricing calculations with both discount and special offer discount
   const price = parseFloat(selected.price);
   const discount = parseFloat(selected.discount || "0");
+  const specialDiscount = parseFloat(selected.special_offer_discount || "0");
+
   const discountAmount = (price * discount) / 100;
-  const discountedPrice = price - discountAmount;
-  // --- NEW FUNCTION TO HANDLE COPYING ---
+  const priceAfterDiscount = price - discountAmount;
+
+  const specialDiscountAmount = (priceAfterDiscount * specialDiscount) / 100;
+  const finalPrice = priceAfterDiscount - specialDiscountAmount;
+
+  const totalSavings = price - finalPrice;
+
+  // --- COPY LINK HANDLER ---
   const handleCopyLink = async () => {
-    // Ensure this runs only on the client side
     if (typeof window === "undefined" || !navigator.clipboard) {
       setCopyStatus("Clipboard not supported.");
       setTimeout(() => setCopyStatus(""), 3000);
@@ -36,7 +45,6 @@ export default function ProductDetails({product, variants}: {product: any; varia
 
     try {
       const productUrl = window.location.href;
-
       await navigator.clipboard.writeText(productUrl);
       setCopyStatus("Link copied to the clipboard!");
       setTimeout(() => setCopyStatus(""), 2000);
@@ -70,18 +78,22 @@ export default function ProductDetails({product, variants}: {product: any; varia
             </div>
           </div>
 
+          {/* Pricing Section */}
           <div className="flex flex-col gap-1">
             <div className="flex items-end gap-4">
-              {discount > 0 ? (
-                <>
-                  <p className="text-2xl font-semibold text-green-700">₹{discountedPrice.toFixed(2)}</p>
-                  <p className="text-muted-foreground line-through">₹{price.toFixed(2)}</p>
-                  <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">{discount}% OFF</span>
-                </>
-              ) : (
-                <p className="text-2xl font-semibold">₹{price.toFixed(2)}</p>
-              )}
+              <p className="text-2xl font-semibold text-green-700">रू {finalPrice.toFixed(2)}</p>
+
+              {(discount > 0 || specialDiscount > 0) && <p className="text-muted-foreground line-through">रू {price.toFixed(2)}</p>}
+
+              {discount > 0 && <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">{discount}% OFF</span>}
+              {specialDiscount > 0 && <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">+ {product.special_offer}% OFF</span>}
             </div>
+
+            {specialDiscount > 0 && (
+              <p className="text-sm text-green-600">
+                Save रू {totalSavings.toFixed(2)} with {product.special_offer}!
+              </p>
+            )}
           </div>
 
           <Separator />

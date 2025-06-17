@@ -1,6 +1,6 @@
 "use client";
 
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
@@ -18,49 +18,33 @@ type Store = {
 };
 
 export default function StoreGallery() {
+  const [stores, setStores] = useState<Store[]>([]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Demo data with Google Street View iframes
-  const stores: Store[] = [
-    {
-      id: 1,
-      name: "Nova Kitchen and Interiors",
-      location: "Main Road, Narayangarh(way to Pokhara Buspark)",
-      images: [
-        {
-          image: "/store1_img1.jpg",
-          iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1749029310530!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmEzX3dF!2m2!1d27.6980700472754!2d84.42257670783533!3f204.26!4f6.640000000000001!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
-        },
-        {
-          image:
-            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrqEgMcAFi1M--BTgAAzYFBhNHOigDegnapZ9gyEXC9GCOMLfNh_wU_yJhOLIi-pYV9IQqZq95-kANl-YFHKb-D1rPabbFZnQNPkTjne4knUthwp5h6tc5NElrxfILsOp-KDEqw=s1360-w1360-h1020-rw",
-        },
-        {
-          image:
-            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nok4qcXleG9up0Kd5AI_Nl732oYHkn_0KT_J5_-OT0i7WTA2aTfm6fGmCr-6R28WZVyl2F1SRNCSlmv9ZSRreUJEfoWgCva8UkETKg_jjReMaIbMimYwWJ6yBBZfPN2IKyPQmZO=s1360-w1360-h1020-rw",
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "Nova Kitchen and Interiors",
-      location: "Milan Chowk, near Paras Buspark ",
-      images: [
-        {
-          image: "/store2_img1.jpg",
-          iframe: `<iframe src="https://www.google.com/maps/embed?pb=!4v1748860630805!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ2VzYmJkd2dF!2m2!1d27.69802762845!2d84.42260443516426!3f0.1323818099937739!4f-14.268468738054366!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
-        },
-        {
-          image:
-            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noNvI8r5PTam9p1jcqWp33cfHK6ElroWIIFqOJiwgb_hI7hNMWXpckHmZOOA4ShlHgyrQjlzmAspLsA5-lzIryZ8SV36p5EgTcxPjIGNkinArbWgMrlrUSuc6VuH1PctyM7D8yI=s1360-w1360-h1020-rw",
-        },
-        {
-          image:
-            "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npOdEGTPM4mw6XxVPYaLekINTcOeTjjPVxrpNWiT2l2TdjnOWWqtf7XMQL9Hu8Ta1W-N5ubCZuWpppJJfSXFQ6b6c98wn1I9vF1uLU113qFRTlnohaEAuM4BndtjdbdL94wicVa=s1360-w1360-h1020-rw",
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    const fetchStores = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/v1/product/store-galleries/`);
+        const data = await response.json();
+
+        const normalizedStores: Store[] = data.results.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          location: item.description,
+          images: item.images.map((img: any) => ({
+            image: img.image,
+            iframe: img.url ? `<iframe src="${img.url}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>` : undefined,
+          })),
+        }));
+
+        setStores(normalizedStores);
+      } catch (error) {
+        console.error("Failed to fetch store galleries:", error);
+      }
+    };
+
+    fetchStores();
+  }, []);
 
   return (
     <>
@@ -83,7 +67,6 @@ export default function StoreGallery() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  {/* Iframes - take full width across both columns */}
                   {iframeImages.map((media, index) => (
                     <motion.div
                       key={media.image + index}
@@ -95,7 +78,6 @@ export default function StoreGallery() {
                     </motion.div>
                   ))}
 
-                  {/* Images - one per column */}
                   {photoImages.map((media, index) => (
                     <motion.div
                       key={media.image + index}
@@ -114,7 +96,6 @@ export default function StoreGallery() {
         </div>
       </div>
 
-      {/* Dialog for full-screen image */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-4xl">
           <DialogHeader>

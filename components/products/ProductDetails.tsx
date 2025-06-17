@@ -15,11 +15,12 @@ import ScrollToTop from "@/components/scrolltotop";
 export default function ProductDetails({product, variants}: {product: any; variants: any[]}) {
   console.log("Product Details:", product);
   console.log("Variants:", variants);
-  const [selectedVariant, setSelectedVariant] = useState(0);
+  const [selectedVariant, setSelectedVariant] = useState(-1);
 
   // --- NEW STATE FOR COPY STATUS ---
   const [copyStatus, setCopyStatus] = useState("");
-  const selected = variants[selectedVariant] || product;
+  const selected = selectedVariant >= 0 ? variants[selectedVariant] : product;
+
   const price = parseFloat(selected.price);
   const discount = parseFloat(selected.discount || "0");
   const discountAmount = (price * discount) / 100;
@@ -57,7 +58,7 @@ export default function ProductDetails({product, variants}: {product: any; varia
             <p className="text-muted-foreground">
               {product.category} / {product.subcategory}
             </p>
-            <h1 className="text-3xl md:text-4xl font-playfair font-bold mt-2">{product.name}</h1>
+            <h1 className="text-3xl md:text-4xl font-playfair font-bold mt-2">{variants[selectedVariant]?.name || product.name}</h1>
             <div className="flex items-center mt-2">
               <p className="text-muted-foreground">{product.brand}</p>
               {product.bestseller && (

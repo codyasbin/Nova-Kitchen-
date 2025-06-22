@@ -157,7 +157,9 @@ class ProductServiceClass {
   async getProducts(params: ProductQueryParams = {}): Promise<ProductListResponse> {
     try {
       const queryString = this.buildQueryString(params);
-      const url = `${this.baseURL}api/v1/product/${queryString ? `?${queryString}` : ''}`;
+      // const url = `${this.baseURL}api/v1/product/${queryString ? `?${queryString}` : ''}`;
+      const url = `${this.baseURL}api/v1/product/?limit=1000&offset=10`;
+      
       
       const response = await fetch(url, {
         method: 'GET',

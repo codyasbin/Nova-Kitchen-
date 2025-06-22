@@ -8,6 +8,7 @@ import {ThemeProvider} from "@/components/providers/ThemeProvider";
 import {Toaster} from "@/components/ui/toaster";
 
 import MessengerChatHead from "@/components/layout/MessengerChatHead";
+import WhatsappChatHead from "@/components/layout/WhatsappChatHead";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +38,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
+            <WhatsappChatHead/>
             <MessengerChatHead />
+            
+
             <Footer />
           </div>
           <Toaster />
